@@ -4,12 +4,17 @@ Configuration files for [neovim](https://neovim.io/)
 
 ## Requirements
 
-- neovim: npm package
+- neovim: node neovim package
 - pynvim: python neovim package
+- [node-debug2](https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#javascript): nvim-dap adapter for node
+- node-debug: nvim-dap adapter for web inspector debugger
+- lua-fmt: node lua formatter package
 
 ```sh
-npm i -g neovim
+npm i -g neovim lua-fmt
 pip install pynvim
+paru -S node-debug2
+npm i -g node-debug2
 ```
 
 ## Quick start
@@ -29,7 +34,7 @@ stow -vt ~ nvim
   [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 - Status line with [lualine.nvim](https://github.com/hoob3rt/lualine.nvim)
 - Tests with [vim-test](https://github.com/vim-test/vim-test) and
-  [nvim-dap](https://github.com/mfussenegger/nvim-dap) (WIP)
+  [nvim-dap](https://github.com/mfussenegger/nvim-dap)
 - Theme with [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
 - Spell for markdown, mdx and latex files, in two languages (en_us and es_es)
 - Terminal with [nvim-toggleterm.lua](https://github.com/akinsho/nvim-toggleterm.lua)
