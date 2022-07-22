@@ -40,6 +40,8 @@ require "telescope".load_extension "ui-select"
 -- Mappings
 --
 
+-- Remember: C-q create a quickfix list with the results
+
 vim.keymap.set("n", "<leader>fr", require "telescope.builtin".resume, {desc = "Telescope: Resume"})
 
 -- Files

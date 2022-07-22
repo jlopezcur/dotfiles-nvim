@@ -4,17 +4,27 @@ Configuration files for [neovim](https://neovim.io/)
 
 ## Requirements
 
-- neovim: node neovim package
-- pynvim: python neovim package
-- [node-debug2](https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#javascript): nvim-dap adapter for node
-- node-debug: nvim-dap adapter for web inspector debugger
-- lua-fmt: node lua formatter package
+- Core:
+  - neovim: node neovim package
+  - pynvim: python neovim package
+  - wl-copy: for clipboard management
+- DAP:
+  - [node-debug2](https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#javascript): nvim-dap adapter for node
+  - node-debug: nvim-dap adapter for web inspector debugger
+- Formatters:
+  - lua-fmt: for lua format
+  - prettier: for js/ts/json/yaml/html/scss/css format
+  - xmlformat: for xml format
+  - texlive-latexindent-meta: for tex format
+  - rustfmt: for rust format (included in rust package)
+  - shfmt: for shell format
+  - clang-format: for c/c++ format (included in clang package)
 
 ```sh
-npm i -g neovim lua-fmt
+npm i -g neovim lua-fmt prettier
 pip install pynvim
-paru -S node-debug2
-npm i -g node-debug2
+paru -S node-debug2 python-xmlformatter texlive-latexindent-meta rust shfmt \
+  clang wl-copy
 ```
 
 ## Quick start
@@ -30,6 +40,7 @@ stow -vt ~ nvim
 - Formatter with [formatter.nvim](https://github.com/mhartington/formatter.nvim)
 - VCS git with [vim-fugitive](https://github.com/tpope/vim-fugitive) and
   [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
+- File navigation with [nvim-tree](https://github.com/kyazdani42/nvim-tree.lua)
 - Fuzzy finder with
   [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 - Status line with [lualine.nvim](https://github.com/hoob3rt/lualine.nvim)
@@ -41,7 +52,6 @@ stow -vt ~ nvim
 - LSP with [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
   - Rust extras with [rust-tools.nvim](https://github.com/simrat39/rust-tools.nvim)
 - Notifications with [nvim-notify](https://github.com/rcarriga/nvim-notify)
-- File navigation with integrated Netrw with some modifications (WIP)
 
 And much more...
 

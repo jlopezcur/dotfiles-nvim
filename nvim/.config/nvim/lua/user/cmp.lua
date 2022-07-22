@@ -1,10 +1,11 @@
---
--- Configuration
---
-
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 local luasnip = require("luasnip")
 local cmp = require("cmp")
 local lspkind = require("lspkind")
+
+--
+-- Configuration
+--
 
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -26,7 +27,7 @@ cmp.setup(
       {
         ["<C-d>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping.complete(),
+        ["<C-Space>"] = cmp.mapping.complete({}),
         ["<C-e>"] = cmp.mapping.abort(),
         ["<CR>"] = cmp.mapping.confirm({select = true}),
         ["<Tab>"] = cmp.mapping(
@@ -71,3 +72,5 @@ cmp.setup(
     }
   }
 )
+
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
