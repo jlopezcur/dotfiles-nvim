@@ -116,7 +116,14 @@ return require "packer".startup(
     use "vimwiki/vimwiki" -- https://github.com/vimwiki/vimwiki
 
     -- surround
-    use "tpope/vim-surround" -- https://github.com/tpope/vim-surround
+    use(
+      {
+        "kylechui/nvim-surround",
+        config = function()
+          require("nvim-surround").setup({})
+        end
+      }
+    )
 
     -- colors
     use "norcalli/nvim-colorizer.lua" -- https://github.com/norcalli/nvim-colorizer.lua
