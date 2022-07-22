@@ -23,12 +23,18 @@ require("telescope").setup {
     git_branches = {
       sort_lastused = true
     }
+  },
+  extensions = {
+    ["ui-select"] = {
+      require("telescope.themes").get_dropdown {}
+    }
   }
 }
 
 require "telescope".load_extension "repo"
 require "telescope".load_extension "neoclip"
 require "telescope".load_extension "fzy_native"
+require "telescope".load_extension "ui-select"
 
 --
 -- Mappings

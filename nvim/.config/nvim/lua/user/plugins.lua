@@ -79,6 +79,7 @@ return require "packer".startup(
       "nvim-telescope/telescope.nvim",
       requires = {{"nvim-lua/plenary.nvim"}, {"nvim-telescope/telescope-fzy-native.nvim"}}
     }
+    use {"nvim-telescope/telescope-ui-select.nvim"}
     use "tpope/vim-vinegar" -- https://github.com/tpope/vim-vinegar
     -- use "SidOfc/carbon.nvim" -- https://github.com/SidOfc/carbon.nvim
     use "cljoly/telescope-repo.nvim" -- https://github.com/cljoly/telescope-repo.nvim
