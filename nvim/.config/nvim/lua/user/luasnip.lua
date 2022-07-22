@@ -137,5 +137,5 @@ ls.filetype_extend("typescriptreact", {"javascript"})
 -- Mappings
 --
 
-vim.keymap.set("i", "<C-E>", "<Plug>luasnip-next-choice")
-vim.keymap.set("s", "<C-E>", "<Plug>luasnip-next-choice")
+vim.keymap.set("i", "<C-E>", "<Plug>luasnip-next-choice", {desc = "Luasnip: Next choice"})
+vim.keymap.set("s", "<C-E>", "<Plug>luasnip-next-choice", {desc = "Luasnip: Next choice"})

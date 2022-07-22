@@ -2,8 +2,8 @@
 vim.keymap.set("n", "<Leader>qf", "<cmd>_ciwimportf=dwdwifrom lx$hxj", {desc = "Require -> Import"})
 
 -- tex
-vim.keymap.set("n", "<Leader>lp", ":!pandoc -o '%:p:h/%:t:r.pdf' '%'<CR>")
-vim.keymap.set("n", "<Leader>lf", ":!pdflatex '%'<CR>")
+vim.keymap.set("n", "<Leader>lp", ":!pandoc -o '%:p:h/%:t:r.pdf' '%'<CR>", {desc = "Pandoc file -> pdf"})
+vim.keymap.set("n", "<Leader>lf", ":!pdflatex '%'<CR>", {desc = "Pdflatex"})
 
 -- npm
 vim.api.nvim_create_autocmd(
@@ -17,12 +17,10 @@ vim.api.nvim_create_autocmd(
   }
 )
 
--- close a buffer
-vim.keymap.set("n", "<Leader>gq", ":BufDel<CR>")
+vim.keymap.set("n", "<Leader>gq", ":BufDel<CR>", {desc = "Close the buffer"})
 
 --
 -- vimrc
 --
 
--- Edit vimrc configuration file
-vim.keymap.set("n", "<Leader>e", ":e ~/.config/nvim/lua/user/<CR>")
+vim.keymap.set("n", "<Leader>e", ":e ~/.config/nvim/lua/user/<CR>", {desc = "Edit vimrc configuration files"})

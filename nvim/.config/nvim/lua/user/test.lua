@@ -13,8 +13,8 @@ vim.g["test#javascript#jest#options"] = {
 -- Mappings
 --
 
-vim.keymap.set("n", "<Leader>tn", ":TestNearest<CR>")
-vim.keymap.set("n", "<Leader>tf", ":TestFile<CR>")
-vim.keymap.set("n", "<Leader>ts", ":TestSuite<CR>")
-vim.keymap.set("n", "<Leader>tl", ":TestLast<CR>")
-vim.keymap.set("n", "<Leader>tv", ":TestVisit<CR>")
+vim.keymap.set("n", "<Leader>tn", ":TestNearest<CR>", {desc = "Test nearest"})
+vim.keymap.set("n", "<Leader>tf", ":TestFile<CR>", {desc = "Test file"})
+vim.keymap.set("n", "<Leader>ts", ":TestSuite<CR>", {desc = "Test suite"})
+vim.keymap.set("n", "<Leader>tl", ":TestLast<CR>", {desc = "Test last"})
+vim.keymap.set("n", "<Leader>tv", ":TestVisit<CR>", {desc = "Test visit"})

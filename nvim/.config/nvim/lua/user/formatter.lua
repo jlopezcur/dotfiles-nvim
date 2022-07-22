@@ -134,5 +134,5 @@ require("formatter").setup(
 -- Mappings
 --
 
-vim.keymap.set("n", "<space>f", "<cmd>Format<CR>")
-vim.keymap.set("v", "<space>f", "<cmd>Format<CR>")
+vim.keymap.set("n", "<space>f", "<cmd>Format<CR>", {desc = "Format"})
+vim.keymap.set("v", "<space>f", "<cmd>Format<CR>", {desc = "Format range"})

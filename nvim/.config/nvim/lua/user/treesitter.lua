@@ -51,7 +51,7 @@ vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
 -- Mappings
 --
 
-vim.keymap.set("n", "<Leader>tp", ":TSPlaygroundToggle<CR>")
+vim.keymap.set("n", "<Leader>tp", ":TSPlaygroundToggle<CR>", {desc = "Toggle TS Playground"})
 
 --
 -- Custom

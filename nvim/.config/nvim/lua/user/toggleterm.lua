@@ -17,4 +17,4 @@ require "toggleterm".setup {
 -- Mappings
 --
 
-vim.keymap.set("t", "<Leader><Esc>", "<C-\\><C-n>")
+vim.keymap.set("t", "<Leader><Esc>", "<C-\\><C-n>", {desc = "Change to normal mode"})

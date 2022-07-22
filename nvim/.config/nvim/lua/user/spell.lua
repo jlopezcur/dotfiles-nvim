@@ -13,5 +13,4 @@ vim.cmd("set complete+=kspell")
 -- Mappings
 --
 
--- Use telescope on spell suggestion list
-vim.keymap.set("n", "z=", require("telescope.builtin").spell_suggest)
+vim.keymap.set("n", "z=", require("telescope.builtin").spell_suggest, {desc = "Spell suggestions"})

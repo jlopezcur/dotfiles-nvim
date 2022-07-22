@@ -13,7 +13,7 @@ vim.keymap.set(
 )
 vim.keymap.set(
   "n",
-  "<Leader>dc",
+  "<Leader>dm",
   ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>",
   {desc = "DAP: Log point"}
 )
@@ -24,18 +24,30 @@ vim.keymap.set("n", "<Leader>dl", ":lua require'dap'.continue()<CR>", {desc = "D
 vim.keymap.set("n", "<Leader>drr", ":lua require'dap'.repl.open()<CR>", {desc = "DAP: Open REPL"})
 vim.keymap.set("n", "<Leader>drl", ":lua require'dap'.repl.run_last()<CR>", {desc = "DAP: Run last REPL "})
 
-vim.keymap.set("n", "<leader>da", ":lua _dap_attach()<CR>")
-vim.keymap.set("n", "<leader>dA", ':lua require"debugHelper".attachToRemote()<CR>')
-
--- require'telescope'.extensions.dap.commands{}
--- require'telescope'.extensions.dap.configurations{}
 vim.keymap.set(
   "n",
   "<Leader>dp",
   ":lua require'telescope'.extensions.dap.list_breakpoints{}<CR>",
-  {desc = "DAP: List all breakpoints"}
+  {desc = "DAP: List breakpoints"}
 )
--- require'telescope'.extensions.dap.variables{}
+vim.keymap.set(
+  "n",
+  "<Leader>dc",
+  ":lua require'telescope'.extensions.dap.commands{}<CR>",
+  {desc = "DAP: List commands"}
+)
+vim.keymap.set(
+  "n",
+  "<Leader>dC",
+  ":lua require'telescope'.extensions.dap.configurations{}<CR>",
+  {desc = "DAP: List configurations"}
+)
+vim.keymap.set(
+  "n",
+  "<Leader>dv",
+  ":lua require'telescope'.extensions.dap.variables{}<CR>",
+  {desc = "DAP: List variables"}
+)
 
 --
 -- Adapters
@@ -73,8 +85,8 @@ dap.configurations.javascript = {
 -- Configuration
 --
 
-require("telescope").load_extension("dap")
-require("dapui").setup()
+require "telescope".load_extension("dap")
+require "dapui".setup()
 
 vim.highlight.create("DapBreakpoint", {ctermbg = 0, guifg = "#993939", guibg = "#31353f"}, false)
 vim.highlight.create("DapLogPoint", {ctermbg = 0, guifg = "#61afef", guibg = "#31353f"}, false)
