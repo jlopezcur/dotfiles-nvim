@@ -5,13 +5,14 @@ Configuration files for [neovim](https://neovim.io/)
 ## Requirements
 
 - Core:
-  - neovim: node neovim package
-  - pynvim: python neovim package
-  - wl-copy: for clipboard management
-  - bat: for preview non-markdown READMEs
-  - glow: for preview markdown READMEs
-  - fd: for find files
-  - rg: for replace system grep
+  - [neovim](https://github.com/neovim/node-client): node neovim package
+  - [pynvim](https://github.com/neovim/pynvim): python neovim package
+  - [wl-copy](https://github.com/bugaevc/wl-clipboard): for clipboard management
+  - [bat](https://github.com/sharkdp/bat): for preview non-markdown READMEs
+  - [glow](https://github.com/charmbracelet/glow): for preview markdown READMEs
+  - [fd](https://github.com/sharkdp/fd): for find files
+  - [ripgrep](https://github.com/BurntSushi/ripgrep): for replace system grep
+  - [tree-sitter](https://tree-sitter.github.io/tree-sitter/): for use tree-sitter highlights
 - DAP:
   - [node-debug2](https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#javascript): nvim-dap adapter for node
   - node-debug: nvim-dap adapter for web inspector debugger
@@ -28,7 +29,7 @@ Configuration files for [neovim](https://neovim.io/)
 npm i -g neovim lua-fmt prettier
 pip install pynvim
 paru -S node-debug2 python-xmlformatter texlive-latexindent-meta rust shfmt \
-  clang wl-copy bat glow fd rg
+  clang wl-copy bat glow fd rg tree-sitter
 ```
 
 ## Quick start
@@ -56,12 +57,13 @@ stow -vt ~ nvim
 - LSP with [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
   - Rust extras with [rust-tools.nvim](https://github.com/simrat39/rust-tools.nvim)
 - Notifications with [nvim-notify](https://github.com/rcarriga/nvim-notify)
+- Highlight with [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 
 And much more...
 
 ## References
 
-- [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+- [tree-sitter](https://tree-sitter.github.io/tree-sitter/)
 
 ## Other resources
 
