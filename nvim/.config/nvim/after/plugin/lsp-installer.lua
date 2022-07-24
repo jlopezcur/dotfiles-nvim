@@ -1,0 +1,23 @@
+require("nvim-lsp-installer").setup(
+  {
+    ensure_installed = {
+      "aduino_language_server",
+      "bashls",
+      "clangd",
+      "cssls",
+      "diagnosticls",
+      "eslint",
+      "graphql",
+      "html",
+      "jsonls",
+      "pyright",
+      "rust_analyzer",
+      "sqlls",
+      "sumneko_lua",
+      "texlab",
+      "tsserver",
+      "vimls",
+      "yamlls"
+    }
+  }
+)
