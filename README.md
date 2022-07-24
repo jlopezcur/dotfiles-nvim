@@ -8,6 +8,10 @@ Configuration files for [neovim](https://neovim.io/)
   - neovim: node neovim package
   - pynvim: python neovim package
   - wl-copy: for clipboard management
+  - bat: for preview non-markdown READMEs
+  - glow: for preview markdown READMEs
+  - fd: for find files
+  - rg: for replace system grep
 - DAP:
   - [node-debug2](https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#javascript): nvim-dap adapter for node
   - node-debug: nvim-dap adapter for web inspector debugger
@@ -24,7 +28,7 @@ Configuration files for [neovim](https://neovim.io/)
 npm i -g neovim lua-fmt prettier
 pip install pynvim
 paru -S node-debug2 python-xmlformatter texlive-latexindent-meta rust shfmt \
-  clang wl-copy
+  clang wl-copy bat glow fd rg
 ```
 
 ## Quick start
