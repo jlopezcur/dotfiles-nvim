@@ -111,7 +111,6 @@ return require "packer".startup(
       },
       tag = "nightly"
     }
-    use "cljoly/telescope-repo.nvim"
     use {
       "AckslD/nvim-neoclip.lua",
       config = function()

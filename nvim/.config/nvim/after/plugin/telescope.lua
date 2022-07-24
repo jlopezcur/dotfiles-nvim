@@ -31,7 +31,6 @@ require("telescope").setup {
   }
 }
 
-require "telescope".load_extension "repo"
 require "telescope".load_extension "neoclip"
 require "telescope".load_extension "fzy_native"
 require "telescope".load_extension "ui-select"
@@ -58,9 +57,6 @@ vim.keymap.set("n", "gr", require "telescope.builtin".lsp_references, {desc = "T
 vim.keymap.set("n", "<leader>gb", require "telescope.builtin".git_branches, {desc = "Telescope: Git branches"})
 vim.keymap.set("n", "<leader>gc", require "telescope.builtin".git_bcommits, {desc = "Telescope: Git bcommits"})
 vim.keymap.set("n", "<leader>gt", require "telescope.builtin".git_stash, {desc = "Telescope: Git stash"})
-
--- Repo List
-vim.keymap.set("n", "<leader>rl", ":Telescope repo list<CR>", {desc = "Telescope: Repo list"})
 
 -- Neoclip
 vim.keymap.set("n", "<leader>yl", ":Telescope neoclip<CR>", {desc = "Telescope: Neoclip"})
