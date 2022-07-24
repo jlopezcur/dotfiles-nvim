@@ -67,7 +67,6 @@ vim.o.smartcase = true
 --
 
 vim.o.cursorline = true
-vim.o.guicursor = ""
 
 --
 -- line numbers
