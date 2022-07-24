@@ -1,11 +1,11 @@
 --
--- Configuration
+-- configuration
 --
 
 require("harpoon").setup()
 
 --
--- Mappings
+-- keymaps
 --
 
 vim.keymap.set("n", "<space>h", "<cmd>lua require'harpoon.ui'.toggle_quick_menu()<CR>", {desc = "Harpoon: Toggle"})

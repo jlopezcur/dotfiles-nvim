@@ -1,5 +1,5 @@
 --
--- Configuration
+-- configuration
 --
 
 local actions = require("telescope.actions")
@@ -37,7 +37,7 @@ require "telescope".load_extension "fzy_native"
 require "telescope".load_extension "ui-select"
 
 --
--- Mappings
+-- keymaps
 --
 
 -- Remember: C-q create a quickfix list with the results

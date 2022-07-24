@@ -1,5 +1,5 @@
 --
--- Configuration
+-- configuration
 --
 
 require "nvim-treesitter.configs".setup {
@@ -48,13 +48,13 @@ vim.wo.foldenable = false
 vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
 
 --
--- Mappings
+-- keymaps
 --
 
 vim.keymap.set("n", "<Leader>tp", ":TSPlaygroundToggle<CR>", {desc = "Toggle TS Playground"})
 
 --
--- Custom
+-- custom
 --
 
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()

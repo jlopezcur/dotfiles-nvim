@@ -1,5 +1,5 @@
 --
--- Configuration
+-- configuration
 --
 
 local prettierForJS = {
@@ -131,7 +131,7 @@ require("formatter").setup(
 )
 
 --
--- Mappings
+-- keymaps
 --
 
 vim.keymap.set("n", "<space>f", "<cmd>Format<CR>", {desc = "Format"})

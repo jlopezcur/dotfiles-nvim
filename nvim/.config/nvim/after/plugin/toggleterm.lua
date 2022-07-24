@@ -1,5 +1,5 @@
 --
--- Configuration
+-- configuration
 --
 
 require "toggleterm".setup {
@@ -14,7 +14,7 @@ require "toggleterm".setup {
 }
 
 --
--- Mappings
+-- keymaps
 --
 
 vim.keymap.set("t", "<Leader><Esc>", "<C-\\><C-n>", {desc = "Change to normal mode"})

@@ -1,5 +1,5 @@
 --
--- Configuration
+-- configuration
 --
 
 local alpha = require("alpha")

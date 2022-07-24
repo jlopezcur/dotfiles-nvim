@@ -1,5 +1,5 @@
 --
--- Configuration
+-- configuration
 --
 
 local lspconfig = require("lspconfig")
@@ -13,7 +13,7 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 vim.api.nvim_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
 --
--- Mappings
+-- keymaps
 --
 
 vim.keymap.set("n", "gd", require("telescope.builtin").lsp_definitions, {desc = "Go to definition"})

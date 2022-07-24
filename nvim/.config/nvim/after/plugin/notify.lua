@@ -1,5 +1,5 @@
 --
--- Configuration
+-- configuration
 --
 
 require("notify").setup(

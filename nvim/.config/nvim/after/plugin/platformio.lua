@@ -1,5 +1,5 @@
 --
--- Mappings
+-- keymaps
 --
 
 vim.keymap.set("n", "<leader>pr", ":term pio -f -c vim run<CR>i", {desc = "Platformio: run"})

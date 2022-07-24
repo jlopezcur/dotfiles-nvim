@@ -1,3 +1,7 @@
+--
+-- configuration
+--
+
 require("nvim-surround").setup(
   {
     delimiters = {

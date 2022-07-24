@@ -1,5 +1,5 @@
 --
--- Configuration
+-- configuration
 --
 
 require("nvim-tree").setup(
@@ -31,7 +31,7 @@ require("nvim-tree").setup(
 )
 
 --
--- mappings
+-- keymaps
 --
 
 vim.keymap.set(

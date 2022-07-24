@@ -1,5 +1,5 @@
 --
--- Configuration
+-- configuration
 --
 
 local fmt = function(str)

@@ -1,5 +1,5 @@
 --
--- Configuration
+-- configuration
 --
 
 local ls = require "luasnip"
@@ -134,7 +134,7 @@ ls.filetype_extend("typescript", {"javascript"})
 ls.filetype_extend("typescriptreact", {"javascript"})
 
 --
--- Mappings
+-- keymaps
 --
 
 vim.keymap.set("i", "<C-E>", "<Plug>luasnip-next-choice", {desc = "Luasnip: Next choice"})

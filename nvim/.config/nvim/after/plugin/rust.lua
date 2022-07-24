@@ -1,3 +1,20 @@
+--
+-- configuration
+--
+
+require("rust-tools").setup(
+  {
+    server = {
+      cmd = {vim.fn.stdpath "data" .. "/lsp_servers/rust/rust-analyzer"},
+      standalone = false
+    }
+  }
+)
+
+--
+-- keymaps
+--
+
 vim.keymap.set("n", "gd", require("telescope.builtin").lsp_definitions)
 vim.keymap.set("n", "gh", vim.lsp.buf.hover)
 vim.keymap.set("n", "gi", vim.lsp.buf.implementation)

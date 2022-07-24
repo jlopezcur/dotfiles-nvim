@@ -4,6 +4,7 @@
 
 vim.o.showmode = false
 vim.o.title = true
+vim.o.termguicolors = true
 
 vim.o.path = ".,**"
 vim.o.encoding = "UTF-8"
@@ -66,16 +67,18 @@ vim.o.smartcase = true
 --
 
 vim.o.cursorline = true
+vim.o.guicursor = ""
 
 --
 -- line numbers
 --
 
-vim.wo.number = true
-vim.wo.relativenumber = true
+vim.o.nu = true
+vim.o.relativenumber = true
 
 --
 -- Visual editor integration
 --
 
 vim.o.guifont = "SauceCodePro Nerd Font:h15"
+

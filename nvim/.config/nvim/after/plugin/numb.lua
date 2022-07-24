@@ -1,5 +1,5 @@
 --
--- Configuration
+-- configuration
 --
 
 require('numb').setup()

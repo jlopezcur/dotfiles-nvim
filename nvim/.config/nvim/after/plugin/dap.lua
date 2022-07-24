@@ -1,7 +1,7 @@
 -- DAP (Debug Adapter Protocol)
 
 --
--- Bindings
+-- keymaps
 --
 
 vim.keymap.set("n", "<Leader>dd", ":lua require'dap'.toggle_breakpoint()<CR>", {desc = "DAP: Toggle breakpoint"})
@@ -50,7 +50,7 @@ vim.keymap.set(
 )
 
 --
--- Adapters
+-- adapters
 --
 
 local dap = require "dap"
@@ -82,7 +82,7 @@ dap.configurations.javascript = {
 }
 
 --
--- Configuration
+-- configuration
 --
 
 require "telescope".load_extension("dap")

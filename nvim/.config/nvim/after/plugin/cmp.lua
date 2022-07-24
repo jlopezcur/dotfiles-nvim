@@ -4,7 +4,7 @@ local cmp = require("cmp")
 local lspkind = require("lspkind")
 
 --
--- Configuration
+-- configuration
 --
 
 local has_words_before = function()

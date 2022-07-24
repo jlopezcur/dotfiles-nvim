@@ -1,5 +1,5 @@
 --
--- Configuration
+-- configuration
 --
 
 -- Use jest configuration on js environments
@@ -10,7 +10,7 @@ vim.g["test#javascript#jest#options"] = {
 }
 
 --
--- Mappings
+-- keymaps
 --
 
 vim.keymap.set("n", "<Leader>tn", ":TestNearest<CR>", {desc = "Test nearest"})

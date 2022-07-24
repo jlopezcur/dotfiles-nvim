@@ -61,5 +61,6 @@ And much more...
 
 ## Other resources
 
+- [Your first vimrc](https://www.youtube.com/watch?v=x2QJYq4IX6M)
 - [Mastering the Vim Language, thoughtbot](https://www.youtube.com/watch?v=wlR5gYd6um0)
 - https://github.com/ecosse3/nvim
