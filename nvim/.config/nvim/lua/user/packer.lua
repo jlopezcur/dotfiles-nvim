@@ -154,9 +154,6 @@ return require "packer".startup(
     use "brooth/far.vim"
     use "ojroques/nvim-bufdel"
 
-    -- wiki
-    use "vimwiki/vimwiki"
-
     -- dashboard
     use {
       "goolord/alpha-nvim",
