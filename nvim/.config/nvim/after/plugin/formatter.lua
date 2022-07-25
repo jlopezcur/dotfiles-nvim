@@ -129,10 +129,3 @@ require("formatter").setup(
     }
   }
 )
-
---
--- keymaps
---
-
-vim.keymap.set("n", "<space>f", "<cmd>Format<CR>", {desc = "Format"})
-vim.keymap.set("v", "<space>f", "<cmd>Format<CR>", {desc = "Format range"})
