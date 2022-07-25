@@ -24,12 +24,14 @@ Configuration files for [neovim](https://neovim.io/)
   - rustfmt: for rust format (included in rust package)
   - shfmt: for shell format
   - clang-format: for c/c++ format (included in clang package)
+- Others:
+  - sqlite: for store between sessions
 
 ```sh
 npm i -g neovim lua-fmt prettier
 pip install pynvim
 paru -S node-debug2 python-xmlformatter texlive-latexindent-meta rust shfmt \
-  clang wl-copy bat glow fd rg tree-sitter
+  clang wl-copy bat glow fd rg tree-sitter sqlite
 ```
 
 ## Quick start

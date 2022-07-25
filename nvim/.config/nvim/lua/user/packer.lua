@@ -111,12 +111,8 @@ return require "packer".startup(
       },
       tag = "nightly"
     }
-    use {
-      "AckslD/nvim-neoclip.lua",
-      config = function()
-        require "neoclip".setup()
-      end
-    }
+    use "AckslD/nvim-neoclip.lua"
+    use "kkharji/sqlite.lua"
     use {
       "ThePrimeagen/harpoon",
       requires = {{"nvim-lua/plenary.nvim"}}
