@@ -129,3 +129,9 @@ require("formatter").setup(
     }
   }
 )
+
+---
+--- keymaps
+---
+
+vim.keymap.set("n", "<space>=", "<cmd>Format<CR>", {desc = "Format the current file"})
