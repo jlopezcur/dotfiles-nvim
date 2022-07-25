@@ -1,12 +1,9 @@
-local ts_utils = require "nvim-treesitter.ts_utils"
-local Job = require "plenary.job"
-
 --
 -- globals
 --
 
 vim.keymap.set("n", "<Leader>gq", ":BufDel<CR>", {desc = "Close the buffer"})
-vim.keymap.set("n", "<Leader>e", ":e ~/.config/nvim/lua/user/<CR>", {desc = "Edit vimrc configuration files"})
+vim.keymap.set("n", "<Leader>e", ":e ~/.config/nvim/<CR>", {desc = "Edit vimrc configuration files"})
 
 --
 -- lua: plugins.lua
@@ -15,20 +12,20 @@ vim.keymap.set("n", "<Leader>e", ":e ~/.config/nvim/lua/user/<CR>", {desc = "Edi
 vim.api.nvim_create_autocmd(
   {"BufEnter", "BufWinEnter"},
   {
-    pattern = {"plugins.lua"},
+    group = vim.api.nvim_create_augroup("Kloder", {clear = true}),
+    pattern = {"packer.lua"},
     callback = function()
       vim.keymap.set(
         "n",
         "gx",
         function()
-          -- print("hello")
-          local node = ts_utils.get_node_at_cursor()
+          local node = require "nvim-treesitter.ts_utils".get_node_at_cursor()
           if node == nil then
             error("No treesitter parser found.")
           end
           local uri = vim.treesitter.get_node_text(node, 0)
           local url = "https://github.com/" .. string.gsub(uri, '"', "")
-          Job:new({command = "qutebrowser", args = {url}}):sync()
+          vim.fn.jobstart({"qutebrowser", url})
         end,
         {buffer = true, desc = "Open plugin in browser"}
       )
