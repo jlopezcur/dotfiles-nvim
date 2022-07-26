@@ -18,7 +18,7 @@ vim.api.nvim_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
 vim.keymap.set("n", "gd", require("telescope.builtin").lsp_definitions, {desc = "Go to definition"})
 vim.keymap.set("n", "gh", vim.lsp.buf.hover, {desc = "Info hover"})
-vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {desc = "Go to implementation"})
+vim.keymap.set("n", "gi", require("telescope.builtin").lsp_implementations, {desc = "Go to implementation"})
 vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, {desc = "List references"})
 vim.keymap.set("n", "ga", vim.lsp.buf.code_action, {desc = "Code actions"})
 vim.keymap.set("v", "ga", vim.lsp.buf.range_code_action, {desc = "Range code actions"})
