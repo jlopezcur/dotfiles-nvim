@@ -5,13 +5,20 @@
 require("nvim-tree").setup(
   {
     sort_by = "case_sensitive",
+    hijack_netrw = true,
+    hijack_directories = {
+      enable = true,
+      auto_open = true
+    },
     view = {
       adaptive_size = false,
       mappings = {
         list = {
           {key = "<CR>", action = "edit_in_place"}
         }
-      }
+      },
+      number = true,
+      relativenumber = true
     },
     renderer = {
       group_empty = true
@@ -34,6 +41,9 @@ local function toggle_replace()
   local view = require "nvim-tree.view"
   if view.is_visible() then
     view.close()
+  elseif vim.bo.filetype == "alpha" then
+    vim.cmd(":Ex")
+    require "nvim-tree".open_replacing_current_buffer()
   else
     require "nvim-tree".open_replacing_current_buffer()
   end
