@@ -216,7 +216,6 @@ return require "packer".startup(
         require("twilight").setup {}
       end
     }
-    use "henriquehbr/nvim-startup.lua"
 
     --
     -- dependencies
