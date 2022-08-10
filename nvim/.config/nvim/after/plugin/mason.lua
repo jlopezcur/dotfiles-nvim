@@ -1,4 +1,15 @@
-require("nvim-lsp-installer").setup(
+require("mason").setup(
+  {
+    ui = {
+      icons = {
+        package_installed = "✓",
+        package_pending = "➜",
+        package_uninstalled = "✗"
+      }
+    }
+  }
+)
+require("mason-lspconfig").setup(
   {
     ensure_installed = {
       "aduino_language_server",

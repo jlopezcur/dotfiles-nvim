@@ -99,9 +99,6 @@ lspconfig.cssls.setup {
   single_file_support = true
 }
 
--- eslint
-lspconfig.eslint.setup {}
-
 -- lua
 lspconfig.sumneko_lua.setup {
   on_attach = on_attach,

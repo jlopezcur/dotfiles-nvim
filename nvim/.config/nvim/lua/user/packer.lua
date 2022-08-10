@@ -21,7 +21,6 @@ return require "packer".startup(
     --
 
     use "neovim/nvim-lspconfig"
-    use "williamboman/nvim-lsp-installer"
     use "tjdevries/nlua.nvim"
     use "nvim-lua/lsp-status.nvim"
     use "hrsh7th/cmp-nvim-lsp"
@@ -39,6 +38,7 @@ return require "packer".startup(
     -- diagnostic
     --
 
+    use "jose-elias-alvarez/null-ls.nvim"
     use {
       "folke/trouble.nvim",
       requires = "kyazdani42/nvim-web-devicons",
@@ -201,6 +201,10 @@ return require "packer".startup(
     -- others
     --
 
+    use {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim"
+    }
     use "nacro90/numb.nvim"
     use "godlygeek/tabular"
     use "simrat39/rust-tools.nvim"
