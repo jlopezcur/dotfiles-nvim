@@ -36,6 +36,9 @@ paru -S node-debug2 python-xmlformatter texlive-latexindent-meta rust shfmt \
 
 ## Quick start
 
+This project use [stow](https://www.gnu.org/software/stow/) for link the
+configuration
+
 ```
 stow -vt ~ nvim
 ```
