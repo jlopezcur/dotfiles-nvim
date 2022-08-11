@@ -83,15 +83,6 @@ require("formatter").setup(
           }
         end
       },
-      -- python = {
-      --   -- Rustfmt
-      --   function()
-      --     return {
-      --       exe = "pyformat",
-      --       stdin = true
-      --     }
-      --   end
-      -- },
       sh = {
         -- Shell Script Formatter
         function()
@@ -117,7 +108,7 @@ require("formatter").setup(
       python = {
         function()
           return {
-            exe = "python -m autopep8",
+            exe = "autopep8",
             args = {
               "--in-place --aggressive --aggressive",
               vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))
