@@ -61,6 +61,7 @@ require("formatter").setup(
   {
     filetype = {
       xml = xmlFormatter,
+      svg = xmlFormatter,
       javascript = prettierForJS,
       javascriptreact = prettierForJS,
       typescript = prettierForJS,
