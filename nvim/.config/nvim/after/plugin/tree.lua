@@ -2,21 +2,14 @@
 -- configuration
 --
 
-require("nvim-tree").setup(
+local tree = require("nvim-tree")
+local tree_marks_navigation = require("nvim-tree.marks.navigation")
+
+tree.setup(
   {
     sort_by = "case_sensitive",
-    hijack_netrw = true,
-    hijack_directories = {
-      enable = true,
-      auto_open = true
-    },
     view = {
-      adaptive_size = false,
-      mappings = {
-        list = {
-          {key = "<CR>", action = "edit_in_place"}
-        }
-      },
+      adaptive_size = true,
       number = true,
       relativenumber = true
     },
@@ -28,30 +21,26 @@ require("nvim-tree").setup(
     },
     git = {
       ignore = false
-    },
-    actions = {
-      open_file = {
-        quit_on_open = true
-      }
     }
   }
 )
-
-local function toggle_replace()
-  local view = require "nvim-tree.view"
-  if view.is_visible() then
-    view.close()
-  elseif vim.bo.filetype == "alpha" then
-    vim.cmd(":Ex")
-    require "nvim-tree".open_replacing_current_buffer()
-  else
-    require "nvim-tree".open_replacing_current_buffer()
-  end
-end
 
 --
 -- keymaps
 --
 
-vim.keymap.set("n", "<space><space>", toggle_replace, {desc = "toggle tree"})
-vim.keymap.set("n", "-", toggle_replace, {desc = "parent directory"})
+vim.keymap.set("n", "<C-p>", ":NvimTreeFindFileToggle<CR>", {desc = "toggle tree"})
+
+vim.api.nvim_create_autocmd(
+  {"BufEnter", "BufWinEnter"},
+  {
+    group = vim.api.nvim_create_augroup("nvim-tree-custom", {clear = true}),
+    pattern = {"NvimTree*"},
+    callback = function()
+      vim.keymap.set("n", "<leader>mn", tree_marks_navigation.next, {buffer = true, desc = "next mark"})
+      vim.keymap.set("n", "<leader>mp", tree_marks_navigation.prev, {buffer = true, desc = "previous mark"})
+      vim.keymap.set("n", "<leader>ms", tree_marks_navigation.select, {buffer = true, desc = "select mark"})
+    end,
+    desc = "keymaps for nvim-tree"
+  }
+)
