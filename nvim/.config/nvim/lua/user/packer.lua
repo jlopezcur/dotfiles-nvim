@@ -146,7 +146,8 @@ return require "packer".startup(
       }
     )
     use "norcalli/nvim-colorizer.lua"
-    use "brooth/far.vim"
+    use "ray-x/guihua.lua"
+    use "ray-x/sad.nvim"
     use "ojroques/nvim-bufdel"
 
     -- dashboard
