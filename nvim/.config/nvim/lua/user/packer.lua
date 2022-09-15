@@ -146,8 +146,7 @@ return require "packer".startup(
       }
     )
     use "norcalli/nvim-colorizer.lua"
-    use "ray-x/guihua.lua"
-    use "ray-x/sad.nvim"
+    use {"windwp/nvim-spectre", requires = "nvim-lua/plenary.nvim"}
     use "ojroques/nvim-bufdel"
 
     -- dashboard
