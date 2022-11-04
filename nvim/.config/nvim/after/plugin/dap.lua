@@ -4,49 +4,49 @@
 -- keymaps
 --
 
-vim.keymap.set("n", "<Leader>dd", ":lua require'dap'.toggle_breakpoint()<CR>", {desc = "DAP: Toggle breakpoint"})
+vim.keymap.set("n", "<Leader>dd", ":lua require'dap'.toggle_breakpoint()<CR>", { desc = "DAP: Toggle breakpoint" })
 vim.keymap.set(
   "n",
   "<Leader>db",
   ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>",
-  {desc = "DAP: Conditional breakpoint"}
+  { desc = "DAP: Conditional breakpoint" }
 )
 vim.keymap.set(
   "n",
   "<Leader>dm",
   ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>",
-  {desc = "DAP: Log point"}
+  { desc = "DAP: Log point" }
 )
-vim.keymap.set("n", "<Leader>dj", ":lua require'dap'.step_into()<CR>", {desc = "DAP: Step into"})
-vim.keymap.set("n", "<Leader>dk", ":lua require'dap'.step_out()<CR>", {desc = "DAP: Step out"})
-vim.keymap.set("n", "<Leader>dj", ":lua require'dap'.step_over()<CR>", {desc = "DAP: Step over"})
-vim.keymap.set("n", "<Leader>dl", ":lua require'dap'.continue()<CR>", {desc = "DAP: Continue"})
-vim.keymap.set("n", "<Leader>drr", ":lua require'dap'.repl.open()<CR>", {desc = "DAP: Open REPL"})
-vim.keymap.set("n", "<Leader>drl", ":lua require'dap'.repl.run_last()<CR>", {desc = "DAP: Run last REPL "})
+vim.keymap.set("n", "<Leader>dj", ":lua require'dap'.step_into()<CR>", { desc = "DAP: Step into" })
+vim.keymap.set("n", "<Leader>dk", ":lua require'dap'.step_out()<CR>", { desc = "DAP: Step out" })
+vim.keymap.set("n", "<Leader>dj", ":lua require'dap'.step_over()<CR>", { desc = "DAP: Step over" })
+vim.keymap.set("n", "<Leader>dl", ":lua require'dap'.continue()<CR>", { desc = "DAP: Continue" })
+vim.keymap.set("n", "<Leader>drr", ":lua require'dap'.repl.open()<CR>", { desc = "DAP: Open REPL" })
+vim.keymap.set("n", "<Leader>drl", ":lua require'dap'.repl.run_last()<CR>", { desc = "DAP: Run last REPL " })
 
 vim.keymap.set(
   "n",
   "<Leader>dp",
   ":lua require'telescope'.extensions.dap.list_breakpoints{}<CR>",
-  {desc = "DAP: List breakpoints"}
+  { desc = "DAP: List breakpoints" }
 )
 vim.keymap.set(
   "n",
   "<Leader>dc",
   ":lua require'telescope'.extensions.dap.commands{}<CR>",
-  {desc = "DAP: List commands"}
+  { desc = "DAP: List commands" }
 )
 vim.keymap.set(
   "n",
   "<Leader>dC",
   ":lua require'telescope'.extensions.dap.configurations{}<CR>",
-  {desc = "DAP: List configurations"}
+  { desc = "DAP: List configurations" }
 )
 vim.keymap.set(
   "n",
   "<Leader>dv",
   ":lua require'telescope'.extensions.dap.variables{}<CR>",
-  {desc = "DAP: List variables"}
+  { desc = "DAP: List variables" }
 )
 
 --
@@ -58,7 +58,7 @@ local dap = require "dap"
 dap.adapters.node2 = {
   type = "executable",
   command = "node",
-  args = {"/usr/lib/vscode-node-debug2/out/src/nodeDebug.js"}
+  args = { "/usr/lib/vscode-node-debug2/out/src/nodeDebug.js" }
 }
 
 dap.configurations.javascript = {
@@ -88,21 +88,21 @@ dap.configurations.javascript = {
 require "telescope".load_extension("dap")
 require "dapui".setup()
 
-vim.highlight.create("DapBreakpoint", {ctermbg = 0, guifg = "#993939", guibg = "#31353f"}, false)
-vim.highlight.create("DapLogPoint", {ctermbg = 0, guifg = "#61afef", guibg = "#31353f"}, false)
-vim.highlight.create("DapStopped", {ctermbg = 0, guifg = "#98c379", guibg = "#31353f"}, false)
+vim.api.nvim_set_hl(0, "DapBreakpoint", { ctermbg = 0, fg = "#993939", bg = "#31353f" })
+vim.api.nvim_set_hl(0, "DapLogPoint", { ctermbg = 0, fg = "#61afef", bg = "#31353f" })
+vim.api.nvim_set_hl(0, "DapStopped", { ctermbg = 0, fg = "#98c379", bg = "#31353f" })
 
--- vim.fn.sign_define('DapBreakpoint', {text='', texthl='', linehl='', numhl=''})
--- vim.fn.sign_define('DapStopped', {text='', texthl='', linehl='', numhl=''})
+vim.fn.sign_define('DapBreakpoint', { text = '', texthl = '', linehl = '', numhl = '' })
+vim.fn.sign_define('DapStopped', { text = '', texthl = '', linehl = '', numhl = '' })
 
-vim.fn.sign_define("DapBreakpoint", {text = "", texthl = "DapBreakpoint", linehl = "", numhl = "DapBreakpoint"})
+vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DapBreakpoint", linehl = "", numhl = "DapBreakpoint" })
 vim.fn.sign_define(
   "DapBreakpointCondition",
-  {text = "ﳁ", texthl = "DapBreakpoint", linehl = "", numhl = "DapBreakpoint"}
+  { text = "ﳁ", texthl = "DapBreakpoint", linehl = "", numhl = "DapBreakpoint" }
 )
 vim.fn.sign_define(
   "DapBreakpointRejected",
-  {text = "", texthl = "DapBreakpoint", linehl = "", numhl = "DapBreakpoint"}
+  { text = "", texthl = "DapBreakpoint", linehl = "", numhl = "DapBreakpoint" }
 )
-vim.fn.sign_define("DapLogPoint", {text = "", texthl = "DapLogPoint", linehl = "", numhl = "DapLogPoint"})
-vim.fn.sign_define("DapStopped", {text = "", texthl = "DapStopped", linehl = "", numhl = "DapStopped"})
+vim.fn.sign_define("DapLogPoint", { text = "", texthl = "DapLogPoint", linehl = "", numhl = "DapLogPoint" })
+vim.fn.sign_define("DapStopped", { text = "", texthl = "DapStopped", linehl = "", numhl = "DapStopped" })
