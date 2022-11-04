@@ -48,12 +48,6 @@ return require "packer".startup(
     }
 
     --
-    -- formatter
-    --
-
-    use "mhartington/formatter.nvim"
-
-    --
     -- snippets
     --
 

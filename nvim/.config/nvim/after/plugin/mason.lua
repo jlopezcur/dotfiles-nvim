@@ -23,6 +23,7 @@ require("mason-lspconfig").setup(
       "jsonls",
       "pyright",
       "rust_analyzer",
+      "remark_ls",
       "sqlls",
       "sumneko_lua",
       "texlab",
