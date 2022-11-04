@@ -34,22 +34,6 @@ vim.keymap.set("n", "<space>d", vim.diagnostic.setloclist, {desc = "Set loc list
 -- servers
 --
 
-local on_attach = function(client)
-  -- Set autocommands conditional on server_capabilities
-  if client.resolved_capabilities.document_highlight then
-    vim.api.nvim_exec(
-      [[
-    augroup lsp_document_highlight
-    autocmd! * <buffer>
-    autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-    autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-    augroup END
-    ]],
-      false
-    )
-  end
-end
-
 local servers = {
   "tsserver",
   "bashls"
@@ -57,52 +41,45 @@ local servers = {
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
-    capabilities = require "cmp_nvim_lsp".update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-    on_attach = on_attach
+    capabilities = require "cmp_nvim_lsp".default_capabilities(vim.lsp.protocol.make_client_capabilities()),
   }
 end
 
 -- clang
 lspconfig.clangd.setup {
-  on_attach = on_attach,
-  capabilities = require "cmp_nvim_lsp".update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+  capabilities = require "cmp_nvim_lsp".default_capabilities(vim.lsp.protocol.make_client_capabilities()),
   cmd = {vim.fn.stdpath "data" .. "/lsp_servers/clangd/clangd/bin/clangd"}
 }
 
 -- html
 lspconfig.html.setup {
-  on_attach = on_attach,
-  capabilities = require "cmp_nvim_lsp".update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+  capabilities = require "cmp_nvim_lsp".default_capabilities(vim.lsp.protocol.make_client_capabilities()),
   cmd = {vim.fn.stdpath "data" .. "/lsp_servers/html/node_modules/.bin/vscode-html-language-server", "--stdio"}
 }
 
 -- python
 lspconfig.pyright.setup {
-  on_attach = on_attach,
-  capabilities = require "cmp_nvim_lsp".update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+  capabilities = require "cmp_nvim_lsp".default_capabilities(vim.lsp.protocol.make_client_capabilities()),
   cmd = {vim.fn.stdpath "data" .. "/lsp_servers/python/node_modules/.bin/pyright-langserver", "--stdio"}
 }
 
 -- latex
 lspconfig.texlab.setup {
-  on_attach = on_attach,
-  capabilities = require "cmp_nvim_lsp".update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+  capabilities = require "cmp_nvim_lsp".default_capabilities(vim.lsp.protocol.make_client_capabilities()),
   cmd = {vim.fn.stdpath "data" .. "/lsp_servers/latex/texlab"},
   standalone = false
 }
 
 -- css
 lspconfig.cssls.setup {
-  on_attach = on_attach,
-  capabilities = require "cmp_nvim_lsp".update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+  capabilities = require "cmp_nvim_lsp".default_capabilities(vim.lsp.protocol.make_client_capabilities()),
   cmd = {vim.fn.stdpath "data" .. "/lsp_servers/cssls/node_modules/.bin/vscode-css-language-server", "--stdio"},
   single_file_support = true
 }
 
 -- lua
 lspconfig.sumneko_lua.setup {
-  on_attach = on_attach,
-  capabilities = require "cmp_nvim_lsp".update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+  capabilities = require "cmp_nvim_lsp".default_capabilities(vim.lsp.protocol.make_client_capabilities()),
   cmd = {vim.fn.stdpath "data" .. "/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server"},
   settings = {
     Lua = {
@@ -122,8 +99,7 @@ lspconfig.sumneko_lua.setup {
 
 -- json
 lspconfig.jsonls.setup {
-  on_attach = on_attach,
-  capabilities = require "cmp_nvim_lsp".update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+  capabilities = require "cmp_nvim_lsp".default_capabilities(vim.lsp.protocol.make_client_capabilities()),
   settings = {
     json = {
       schemas = require("schemastore").json.schemas(),
@@ -134,7 +110,7 @@ lspconfig.jsonls.setup {
 
 -- yaml
 lspconfig.yamlls.setup {
-  capabilities = require "cmp_nvim_lsp".update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+  capabilities = require "cmp_nvim_lsp".default_capabilities(vim.lsp.protocol.make_client_capabilities()),
   settings = {
     yaml = {
       schemas = {
