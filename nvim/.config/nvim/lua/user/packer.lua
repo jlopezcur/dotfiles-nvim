@@ -148,6 +148,7 @@ return require "packer".startup(
     use "norcalli/nvim-colorizer.lua"
     use {"windwp/nvim-spectre", requires = "nvim-lua/plenary.nvim"}
     use "ojroques/nvim-bufdel"
+    use "wellle/targets.vim"
 
     -- dashboard
     use {
