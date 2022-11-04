@@ -12,7 +12,7 @@ require("mason").setup(
 require("mason-lspconfig").setup(
   {
     ensure_installed = {
-      "aduino_language_server",
+      "arduino_language_server",
       "bashls",
       "clangd",
       "cssls",
