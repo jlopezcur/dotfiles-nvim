@@ -65,7 +65,7 @@ vim.api.nvim_create_autocmd(
     pattern = {"*.js", "*.jsx", "*.ts", "*.tsx", "package.json"},
     callback = function()
       vim.keymap.set("n", "<Leader>rr", ":tabnew<CR>:term npm start<CR>i", {buffer = true})
-      vim.keymap.set("n", "<Leader>qf", "<cmd>_ciwimportf=dwdwifrom lx$hxj", {desc = "Require -> Import"})
+      vim.keymap.set("n", "<Leader>qf", "w?const <CR>ciwimport<ESC>/=<CR>dwdwifrom <ESC>lx$hxj", {desc = "Require -> Import"})
     end,
     desc = "keymaps for js/jsx/ts/tsx files"
   }
