@@ -2,8 +2,6 @@
 -- configuration
 --
 
-local lspconfig = require("lspconfig")
-
 -- decorations
 local border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
@@ -24,6 +22,7 @@ vim.keymap.set("n", "ga", vim.lsp.buf.code_action, { desc = "Code actions" })
 vim.keymap.set("v", "ga", vim.lsp.buf.range_code_action, { desc = "Range code actions" })
 vim.keymap.set("n", "go", require("telescope.builtin").lsp_document_symbols, { desc = "Document symbols" })
 vim.keymap.set("n", "<space>=", vim.lsp.buf.format, { desc = "Format code" })
+vim.keymap.set("v", "<space>=", vim.lsp.buf.format, { desc = "Format range of code" })
 
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to prev diagnostic" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
@@ -31,119 +30,18 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnos
 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename" })
 vim.keymap.set("n", "<space>d", vim.diagnostic.setloclist, { desc = "Set loc list" })
 
---
--- servers
---
-
-local servers = {
-  "tsserver",
-  "bashls"
-}
-
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    capabilities = require "cmp_nvim_lsp".default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-  }
-end
-
--- clang
-lspconfig.clangd.setup {
-  capabilities = require "cmp_nvim_lsp".default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-  cmd = { vim.fn.stdpath "data" .. "/lsp_servers/clangd/clangd/bin/clangd" }
-}
-
--- html
-lspconfig.html.setup {
-  capabilities = require "cmp_nvim_lsp".default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-  cmd = { vim.fn.stdpath "data" .. "/lsp_servers/html/node_modules/.bin/vscode-html-language-server", "--stdio" }
-}
-
--- markdown
--- lspconfig.remark_ls.setup {
---   capabilities = require "cmp_nvim_lsp".default_capabilities(vim.lsp.protocol.make_client_capabilities()),
---   cmd = { vim.fn.stdpath "data" .. "/mason/bin/remark-language-server", "--stdio" }
--- }
-
--- python
-lspconfig.pyright.setup {
-  capabilities = require "cmp_nvim_lsp".default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-  cmd = { vim.fn.stdpath "data" .. "/lsp_servers/python/node_modules/.bin/pyright-langserver", "--stdio" }
-}
-
--- latex
-lspconfig.texlab.setup {
-  capabilities = require "cmp_nvim_lsp".default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-  cmd = { vim.fn.stdpath "data" .. "/lsp_servers/latex/texlab" },
-  standalone = false
-}
-
--- css
-lspconfig.cssls.setup {
-  capabilities = require "cmp_nvim_lsp".default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-  cmd = { vim.fn.stdpath "data" .. "/lsp_servers/cssls/node_modules/.bin/vscode-css-language-server", "--stdio" },
-  single_file_support = true
-}
-
--- lua
-lspconfig.sumneko_lua.setup {
-  capabilities = require "cmp_nvim_lsp".default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-  cmd = { vim.fn.stdpath "data" .. "/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server" },
-  settings = {
-    Lua = {
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = { "vim", "use" }
-      },
-      telemetry = {
-        enable = false
-      },
-      workspace = {
-        library = vim.api.nvim_get_runtime_file("", true)
-      }
-    }
-  }
-}
-
--- json
-lspconfig.jsonls.setup {
-  capabilities = require "cmp_nvim_lsp".default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-  settings = {
-    json = {
-      schemas = require("schemastore").json.schemas(),
-      validate = { enable = true }
-    }
-  }
-}
-
--- yaml
-lspconfig.yamlls.setup {
-  capabilities = require "cmp_nvim_lsp".default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-  settings = {
-    yaml = {
-      schemas = {
-        ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*.{yml,yaml}",
-        ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
-        ["http://json.schemastore.org/ansible-stable-2.9"] = "roles/tasks/*.{yml,yaml}",
-        ["http://json.schemastore.org/prettierrc"] = ".prettierrc.{yml,yaml}",
-        ["http://json.schemastore.org/stylelintrc"] = ".stylelintrc.{yml,yaml}",
-        ["http://json.schemastore.org/circleciconfig"] = ".circleci/**/*.{yml,yaml}"
-      }
-    }
-  }
-}
-
 -- diagnostic
-vim.diagnostic.config({ update_in_insert = true })
-
-vim.lsp.handlers["textDocument/publishDiagnostics"] =
-vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics,
-  {
-    virtual_text = {
-      source = "always" -- Or "if_many"
-    }
-  }
-)
+-- vim.diagnostic.config({ update_in_insert = true })
+--
+-- vim.lsp.handlers["textDocument/publishDiagnostics"] =
+-- vim.lsp.with(
+--   vim.lsp.diagnostic.on_publish_diagnostics,
+--   {
+--     virtual_text = {
+--       source = "always" -- Or "if_many"
+--     }
+--   }
+-- )
 
 vim.diagnostic.open_float =
 (function(orig)

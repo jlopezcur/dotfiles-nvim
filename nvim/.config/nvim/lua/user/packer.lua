@@ -14,7 +14,7 @@ vim.cmd("autocmd BufWritePost plugins.lua PackerCompile")
 return require "packer".startup(
   function()
     -- Packer can manage itself as an optional plugin
-    use {"wbthomason/packer.nvim", opt = true}
+    use { "wbthomason/packer.nvim", opt = true }
 
     --
     -- lsp
@@ -33,6 +33,7 @@ return require "packer".startup(
     use "f3fora/cmp-spell"
     use "b0o/schemastore.nvim"
     use "folke/lsp-colors.nvim"
+    use { "petertriho/cmp-git", requires = "nvim-lua/plenary.nvim" }
 
     --
     -- diagnostic
@@ -67,7 +68,7 @@ return require "packer".startup(
 
     use {
       "hoob3rt/lualine.nvim",
-      requires = {"kyazdani42/nvim-web-devicons", opt = true}
+      requires = { "kyazdani42/nvim-web-devicons", opt = true }
     }
 
     --
@@ -80,7 +81,7 @@ return require "packer".startup(
     -- treesitter
     --
 
-    use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
+    use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
     use "nvim-treesitter/playground"
     use {
       "lewis6991/spellsitter.nvim",
@@ -95,7 +96,7 @@ return require "packer".startup(
 
     use {
       "nvim-telescope/telescope.nvim",
-      requires = {{"nvim-lua/plenary.nvim"}, {"nvim-telescope/telescope-fzy-native.nvim"}}
+      requires = { { "nvim-lua/plenary.nvim" }, { "nvim-telescope/telescope-fzy-native.nvim" } }
     }
     use "nvim-telescope/telescope-ui-select.nvim"
     use {
@@ -109,7 +110,7 @@ return require "packer".startup(
     use "kkharji/sqlite.lua"
     use {
       "ThePrimeagen/harpoon",
-      requires = {{"nvim-lua/plenary.nvim"}}
+      requires = { { "nvim-lua/plenary.nvim" } }
     }
     use "tpope/vim-repeat"
     use "ggandor/lightspeed.nvim"
@@ -118,7 +119,7 @@ return require "packer".startup(
     -- preview
     --
 
-    use {"iamcco/markdown-preview.nvim", run = "cd app && yarn install"}
+    use { "iamcco/markdown-preview.nvim", run = "cd app && yarn install" }
 
     --
     -- edition
@@ -140,14 +141,14 @@ return require "packer".startup(
       }
     )
     use "norcalli/nvim-colorizer.lua"
-    use {"windwp/nvim-spectre", requires = "nvim-lua/plenary.nvim"}
+    use { "windwp/nvim-spectre", requires = "nvim-lua/plenary.nvim" }
     use "ojroques/nvim-bufdel"
     use "wellle/targets.vim"
 
     -- dashboard
     use {
       "goolord/alpha-nvim",
-      requires = {"kyazdani42/nvim-web-devicons"}
+      requires = { "kyazdani42/nvim-web-devicons" }
     }
 
     -- wich key
@@ -170,7 +171,7 @@ return require "packer".startup(
     -- }
     use "mfussenegger/nvim-dap"
     use "nvim-telescope/telescope-dap.nvim"
-    use {"rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"}}
+    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
 
     --
     -- term
@@ -190,7 +191,7 @@ return require "packer".startup(
       }
     }
     use "rhysd/git-messenger.vim"
-    use {"sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim"}
+    use { "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" }
 
     --
     -- decorators
@@ -221,15 +222,5 @@ return require "packer".startup(
       end
     }
 
-    --
-    -- dependencies
-    --
-
-    -- use(
-    --   {
-    --     "vuki656/package-info.nvim",
-    --     requires = "MunifTanjim/nui.nvim"
-    --   }
-    -- )
   end
 )
