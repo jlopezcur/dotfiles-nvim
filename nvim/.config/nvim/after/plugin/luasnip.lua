@@ -132,6 +132,7 @@ ls.add_snippets(
 ls.filetype_extend("javascriptreact", {"javascript"})
 ls.filetype_extend("typescript", {"javascript"})
 ls.filetype_extend("typescriptreact", {"javascript"})
+ls.filetype_extend("mdx", {"javascript", "typescript", "typescriptreact"})
 
 --
 -- keymaps
