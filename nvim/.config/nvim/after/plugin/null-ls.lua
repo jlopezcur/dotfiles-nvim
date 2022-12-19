@@ -3,7 +3,6 @@ null_ls.setup(
   {
     sources = {
       null_ls.builtins.diagnostics.markdownlint,
-      null_ls.builtins.diagnostics.eslint,
       null_ls.builtins.formatting.prettier,
     }
   }

@@ -25,6 +25,16 @@ require("mason-lspconfig").setup(
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 require("lspconfig").tsserver.setup {
+  capabilities = capabilities,
+  settings = {
+    javascript = {
+      format = {
+        enable = false -- Use the formatter from null-ls
+      }
+    }
+  }
+}
+require("lspconfig").eslint.setup {
   capabilities = capabilities
 }
 require("lspconfig").astro.setup {
