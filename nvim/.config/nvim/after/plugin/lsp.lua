@@ -21,8 +21,14 @@ vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, { desc = 
 vim.keymap.set("n", "ga", vim.lsp.buf.code_action, { desc = "Code actions" })
 vim.keymap.set("v", "ga", vim.lsp.buf.range_code_action, { desc = "Range code actions" })
 vim.keymap.set("n", "go", require("telescope.builtin").lsp_document_symbols, { desc = "Document symbols" })
-vim.keymap.set("n", "<space>=", vim.lsp.buf.format, { desc = "Format code" })
+vim.keymap.set("n", "<space>=", function() vim.lsp.buf.format { async = true } end, { desc = "Format code" })
 vim.keymap.set("v", "<space>=", vim.lsp.buf.format, { desc = "Format range of code" })
+
+vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, { desc = "Add workspace folder" })
+vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, { desc = "Remove workspace folder" })
+vim.keymap.set('n', '<space>wl', function()
+  print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+end, { desc = "List workspace folders" })
 
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to prev diagnostic" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
@@ -31,17 +37,7 @@ vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename" })
 vim.keymap.set("n", "<space>d", vim.diagnostic.setloclist, { desc = "Set loc list" })
 
 -- diagnostic
--- vim.diagnostic.config({ update_in_insert = true })
---
--- vim.lsp.handlers["textDocument/publishDiagnostics"] =
--- vim.lsp.with(
---   vim.lsp.diagnostic.on_publish_diagnostics,
---   {
---     virtual_text = {
---       source = "always" -- Or "if_many"
---     }
---   }
--- )
+vim.diagnostic.config({ update_in_insert = true })
 
 vim.diagnostic.open_float =
 (function(orig)
