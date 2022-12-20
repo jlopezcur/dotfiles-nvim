@@ -79,5 +79,5 @@ vim.o.relativenumber = true
 -- Visual editor integration
 --
 
-vim.o.guifont = "SauceCodePro Nerd Font:h15"
+vim.o.guifont = "FiraCode Nerd Font:h15"
 

@@ -30,7 +30,6 @@ return require "packer".startup(
     use "hrsh7th/cmp-cmdline"
     use "hrsh7th/nvim-cmp"
     use "onsails/lspkind-nvim"
-    use "f3fora/cmp-spell"
     use "b0o/schemastore.nvim"
     use "folke/lsp-colors.nvim"
     use { "petertriho/cmp-git", requires = "nvim-lua/plenary.nvim" }
@@ -83,12 +82,6 @@ return require "packer".startup(
 
     use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
     use "nvim-treesitter/playground"
-    use {
-      "lewis6991/spellsitter.nvim",
-      config = function()
-        require "spellsitter".setup()
-      end
-    }
 
     --
     -- file manager / fuzzy finder
