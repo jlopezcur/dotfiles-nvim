@@ -2,16 +2,16 @@
 -- configuration
 --
 
+vim.cmd("set spelllang=en_us,es_es")
 vim.opt_local.spelloptions:append("noplainbuffer")
 vim.api.nvim_create_autocmd(
   { "BufRead", "BufNewFile" },
-  { pattern = { "*.md", "*.mdx", "*.tex" }, command = "setlocal spell spelllang=en_us,es_es" }
+  { pattern = { "*.md", "*.mdx", "*.tex" }, command = "setlocal spell" }
 )
 vim.api.nvim_create_autocmd("FileType", {
     pattern = { "gitcommit", "gitrebase" },
-    command = "setlocal spell spelllang=en_us,es_es",
+    command = "setlocal spell",
 })
--- vim.cmd("set complete+=kspell")
 
 --
 -- keymaps
