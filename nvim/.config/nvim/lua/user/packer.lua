@@ -155,7 +155,8 @@ return require "packer".startup(
     -- debug & test
     --
 
-    use "vim-test/vim-test"
+    use "klen/nvim-test"
+
     -- use {
     --   "rcarriga/vim-ultest",
     --   requires = {"vim-test/vim-test"},
