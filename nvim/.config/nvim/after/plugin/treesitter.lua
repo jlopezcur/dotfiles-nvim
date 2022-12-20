@@ -3,7 +3,7 @@
 --
 
 require "nvim-treesitter.configs".setup {
-  context_commentstring = {enable = true},
+  context_commentstring = { enable = true },
   ensure_installed = "all",
   highlight = {
     enable = true,
@@ -17,8 +17,8 @@ require "nvim-treesitter.configs".setup {
       node_decremental = "gk"
     }
   },
-  indent = {enable = true},
-  autotag = {enable = true},
+  indent = { enable = true },
+  autotag = { enable = true },
   playground = {
     enable = true,
     disable = {},
@@ -51,7 +51,7 @@ vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
 -- keymaps
 --
 
-vim.keymap.set("n", "<Leader>tp", ":TSPlaygroundToggle<CR>", {desc = "Toggle TS Playground"})
+vim.keymap.set("n", "<Leader>tp", ":TSPlaygroundToggle<CR>", { desc = "Toggle TS Playground" })
 
 --
 -- custom
@@ -62,7 +62,7 @@ parser_config.mdx = {
   install_info = {
     -- url = "https://github.com/jlopezcur/tree-sitter-mdx", -- local path or git repo
     url = "~/tree-sitter/tree-sitter-mdx",
-    files = {"src/parser.c"}
+    files = { "src/parser.c" }
   },
   filetype = "mdx"
 }
