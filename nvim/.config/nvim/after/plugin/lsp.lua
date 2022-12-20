@@ -10,6 +10,32 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 -- config
 vim.api.nvim_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
+-- mason
+require("mason").setup()
+require("mason-lspconfig").setup(
+  {
+    ensure_installed = {
+      "arduino_language_server",
+      "astro",
+      "bashls",
+      "clangd",
+      "cssls",
+      "eslint",
+      "graphql",
+      "html",
+      "jsonls",
+      "pyright",
+      "rust_analyzer",
+      "sqlls",
+      "sumneko_lua",
+      "texlab",
+      "tsserver",
+      "vimls",
+      "yamlls"
+    }
+  }
+)
+
 --
 -- keymaps
 --
@@ -74,3 +100,59 @@ vim.diagnostic.open_float =
     orig(opts)
   end
 end)(vim.diagnostic.open_float)
+
+--
+-- servers
+--
+
+local lspconfig = require('lspconfig')
+local cmp_nvim_lsp = require('cmp_nvim_lsp')
+local schemastore = require('schemastore')
+
+local capabilities = cmp_nvim_lsp.default_capabilities()
+
+lspconfig.tsserver.setup {
+  capabilities = capabilities,
+  settings = {
+    javascript = {
+      format = {
+        enable = false -- Use the formatter from null-ls
+      }
+    }
+  }
+}
+lspconfig.eslint.setup { capabilities = capabilities }
+lspconfig.astro.setup { capabilities = capabilities }
+lspconfig.bashls.setup { capabilities = capabilities }
+lspconfig.clangd.setup { capabilities = capabilities }
+lspconfig.html.setup { capabilities = capabilities }
+lspconfig.pyright.setup { capabilities = capabilities }
+lspconfig.texlab.setup { capabilities = capabilities }
+lspconfig.cssls.setup { capabilities = capabilities }
+lspconfig.sumneko_lua.setup {
+  capabilities = capabilities,
+  settings = {
+    Lua = {
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = { "vim", "use" }
+      },
+      telemetry = {
+        enable = false
+      },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file("", true)
+      }
+    }
+  }
+}
+lspconfig.jsonls.setup {
+  capabilities = capabilities,
+  settings = {
+    json = {
+      schemas = schemastore.json.schemas(),
+      validate = { enable = true }
+    }
+  }
+}
+lspconfig.yamlls.setup { capabilities = capabilities }
