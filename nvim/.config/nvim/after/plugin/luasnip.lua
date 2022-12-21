@@ -16,12 +16,14 @@ ls.config.set_config {
   ext_opts = {
     [types.choiceNode] = {
       active = {
-        virt_text = {{"🤔", "Comment"}}
+        virt_text = { { "🤔", "Comment" } }
       }
     }
   },
   enable_autosnippets = true
 }
+
+require("luasnip.loaders.from_vscode").lazy_load()
 
 ls.add_snippets(
   "javascript",
@@ -79,14 +81,14 @@ ls.add_snippets(
         i(1, "Component"),
         t(" = ({ "),
         i(2, "prop"),
-        t({" }) => {", "\t"}),
+        t({ " }) => {", "\t" }),
         i(3),
-        t({"", "};", "", ""}),
+        t({ "", "};", "", "" }),
         rep(1),
-        t({".propTypes = {", "\t"}),
+        t({ ".propTypes = {", "\t" }),
         rep(2),
-        t({": PropTypes.string,", ""}),
-        t({"};"})
+        t({ ": PropTypes.string,", "" }),
+        t({ "};" })
       }
     )
   }
@@ -129,14 +131,14 @@ ls.add_snippets(
   }
 )
 
-ls.filetype_extend("javascriptreact", {"javascript"})
-ls.filetype_extend("typescript", {"javascript"})
-ls.filetype_extend("typescriptreact", {"javascript"})
-ls.filetype_extend("mdx", {"javascript", "typescript", "typescriptreact"})
+ls.filetype_extend("javascriptreact", { "javascript" })
+ls.filetype_extend("typescript", { "javascript" })
+ls.filetype_extend("typescriptreact", { "javascript" })
+ls.filetype_extend("mdx", { "javascript", "typescript", "typescriptreact" })
 
 --
 -- keymaps
 --
 
-vim.keymap.set("i", "<C-E>", "<Plug>luasnip-next-choice", {desc = "Luasnip: Next choice"})
-vim.keymap.set("s", "<C-E>", "<Plug>luasnip-next-choice", {desc = "Luasnip: Next choice"})
+vim.keymap.set("i", "<C-E>", "<Plug>luasnip-next-choice", { desc = "Luasnip: Next choice" })
+vim.keymap.set("s", "<C-E>", "<Plug>luasnip-next-choice", { desc = "Luasnip: Next choice" })

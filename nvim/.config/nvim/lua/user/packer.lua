@@ -51,6 +51,7 @@ return require "packer".startup(
     --
 
     use "L3MON4D3/LuaSnip"
+    use "rafamadriz/friendly-snippets"
     use "saadparwaiz1/cmp_luasnip"
     use "mattn/emmet-vim"
 
