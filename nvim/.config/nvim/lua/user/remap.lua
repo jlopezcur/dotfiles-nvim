@@ -5,6 +5,12 @@
 vim.keymap.set("n", "<Leader>gq", ":BufDel<CR>", {desc = "Close the buffer"})
 vim.keymap.set("n", "<Leader>e", ":e ~/.config/nvim/<CR>", {desc = "Edit vimrc configuration files"})
 
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
 --
 -- lua: plugins.lua
 --
