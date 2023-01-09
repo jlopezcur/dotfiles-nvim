@@ -118,6 +118,11 @@ lspconfig.tsserver.setup {
       format = {
         enable = false -- Use the formatter from null-ls
       }
+    },
+    typescript = {
+      format = {
+        enable = false -- Use the formatter from null-ls
+      }
     }
   }
 }
