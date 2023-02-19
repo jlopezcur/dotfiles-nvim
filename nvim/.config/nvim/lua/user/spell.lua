@@ -9,8 +9,8 @@ vim.api.nvim_create_autocmd(
   { pattern = { "*.md", "*.mdx", "*.tex" }, command = "setlocal spell" }
 )
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "gitcommit", "gitrebase" },
-    command = "setlocal spell",
+  pattern = { "gitcommit", "gitrebase" },
+  command = "setlocal spell",
 })
 
 --

@@ -64,40 +64,40 @@ vim.keymap.set("n", "<space>d", vim.diagnostic.setloclist, { desc = "Set loc lis
 vim.diagnostic.config({ update_in_insert = true })
 
 vim.diagnostic.open_float =
-(function(orig)
-  return function(opts)
-    local lnum = vim.api.nvim_win_get_cursor(0)[1] - 1
-    -- A more robust solution would check the "scope" value in `opts` to
-    -- determine where to get diagnostics from, but if you're only using
-    -- this for your own purposes you can make it as simple as you like
-    local diagnostics = vim.diagnostic.get(opts.bufnr or 0, { lnum = lnum })
-    local max_severity = vim.diagnostic.severity.HINT
-    for _, d in ipairs(diagnostics) do
-      -- Equality is "less than" based on how the severities are encoded
-      if d.severity < max_severity then
-        max_severity = d.severity
+    (function(orig)
+      return function(opts)
+        local lnum = vim.api.nvim_win_get_cursor(0)[1] - 1
+        -- A more robust solution would check the "scope" value in `opts` to
+        -- determine where to get diagnostics from, but if you're only using
+        -- this for your own purposes you can make it as simple as you like
+        local diagnostics = vim.diagnostic.get(opts.bufnr or 0, { lnum = lnum })
+        local max_severity = vim.diagnostic.severity.HINT
+        for _, d in ipairs(diagnostics) do
+          -- Equality is "less than" based on how the severities are encoded
+          if d.severity < max_severity then
+            max_severity = d.severity
+          end
+        end
+        local border_color =
+            ({
+              [vim.diagnostic.severity.HINT] = "NonText",
+              [vim.diagnostic.severity.INFO] = "Question",
+              [vim.diagnostic.severity.WARN] = "WarningMsg",
+              [vim.diagnostic.severity.ERROR] = "ErrorMsg"
+            })[max_severity]
+        opts.border = {
+          { "╭", border_color },
+          { "─", border_color },
+          { "╮", border_color },
+          { "│", border_color },
+          { "╯", border_color },
+          { "─", border_color },
+          { "╰", border_color },
+          { "│", border_color }
+        }
+        orig(opts)
       end
-    end
-    local border_color =
-    ({
-      [vim.diagnostic.severity.HINT] = "NonText",
-      [vim.diagnostic.severity.INFO] = "Question",
-      [vim.diagnostic.severity.WARN] = "WarningMsg",
-      [vim.diagnostic.severity.ERROR] = "ErrorMsg"
-    })[max_severity]
-    opts.border = {
-      { "╭", border_color },
-      { "─", border_color },
-      { "╮", border_color },
-      { "│", border_color },
-      { "╯", border_color },
-      { "─", border_color },
-      { "╰", border_color },
-      { "│", border_color }
-    }
-    orig(opts)
-  end
-end)(vim.diagnostic.open_float)
+    end)(vim.diagnostic.open_float)
 
 --
 -- servers
@@ -153,6 +153,11 @@ null_ls.setup(
     sources = {
       null_ls.builtins.diagnostics.markdownlint,
       null_ls.builtins.formatting.prettier,
+      null_ls.builtins.formatting.stylua.with({
+        extra_args = { "--config-path", vim.fn.expand("~/.config/stylua.toml") },
+      }),
+      null_ls.builtins.formatting.shfmt,
+      null_ls.builtins.formatting.autopep8
     },
     on_attach = function(client, bufnr)
       if client.supports_method("textDocument/formatting") then

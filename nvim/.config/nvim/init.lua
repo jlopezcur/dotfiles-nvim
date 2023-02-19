@@ -1,6 +1,6 @@
--- -----------
--- < vim.lua >
--- -----------
+-- ------------
+-- < init.lua >
+-- ------------
 --       \                    / \  //\
 --        \    |\___/|      /   \//  \\
 --             /0  0  \__  /    //  | \ \
@@ -22,4 +22,3 @@ require "user.set"
 require "user.remap"
 require "user.spell"
 require "user.packer"
-

@@ -80,4 +80,3 @@ vim.o.relativenumber = true
 --
 
 vim.o.guifont = "FiraCode Nerd Font:h15"
-

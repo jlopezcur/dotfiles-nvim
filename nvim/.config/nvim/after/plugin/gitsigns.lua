@@ -27,7 +27,7 @@ require "gitsigns".setup {
         )
         return "<Ignore>"
       end,
-      {expr = true}
+      { expr = true }
     )
 
     map(
@@ -44,14 +44,14 @@ require "gitsigns".setup {
         )
         return "<Ignore>"
       end,
-      {expr = true}
+      { expr = true }
     )
 
     -- Actions
-    map("n", "<Leader>hp", gs.preview_hunk, {desc = "Preview hunk"})
-    map("n", "<Leader>hs", ":Gitsigns stage_hunk<CR>", {desc = "Stage hunk"})
-    map("n", "<Leader>hr", ":Gitsigns reset_hunk<CR>", {desc = "Reset hunk"})
-    map("n", "<Leader>bl", gs.toggle_current_line_blame, {desc = "Blame line"})
+    map("n", "<Leader>hp", gs.preview_hunk, { desc = "Preview hunk" })
+    map("n", "<Leader>hs", ":Gitsigns stage_hunk<CR>", { desc = "Stage hunk" })
+    map("n", "<Leader>hr", ":Gitsigns reset_hunk<CR>", { desc = "Reset hunk" })
+    map("n", "<Leader>bl", gs.toggle_current_line_blame, { desc = "Blame line" })
     map("n", "<leader>hd", gs.diffthis)
     map(
       "n",
@@ -62,6 +62,6 @@ require "gitsigns".setup {
     )
 
     -- Text object
-    map({"o", "x"}, "ih", ":<C-U>Gitsigns select_hunk<CR>")
+    map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
   end
 }

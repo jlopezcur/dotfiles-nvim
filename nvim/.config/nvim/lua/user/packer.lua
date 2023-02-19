@@ -215,6 +215,5 @@ return require "packer".startup(
         require("twilight").setup {}
       end
     }
-
   end
 )
