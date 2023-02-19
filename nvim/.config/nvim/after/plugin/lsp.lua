@@ -27,7 +27,7 @@ require("mason-lspconfig").setup(
       "pyright",
       "rust_analyzer",
       "sqlls",
-      "sumneko_lua",
+      "lua_ls",
       "texlab",
       "tsserver",
       "vimls",
@@ -47,8 +47,6 @@ vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, { desc = 
 vim.keymap.set("n", "ga", vim.lsp.buf.code_action, { desc = "Code actions" })
 vim.keymap.set("v", "ga", vim.lsp.buf.range_code_action, { desc = "Range code actions" })
 vim.keymap.set("n", "go", require("telescope.builtin").lsp_document_symbols, { desc = "Document symbols" })
-vim.keymap.set("n", "<space>=", function() vim.lsp.buf.format { async = true } end, { desc = "Format code" })
-vim.keymap.set("v", "<space>=", vim.lsp.buf.format, { desc = "Format range of code" })
 
 vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, { desc = "Add workspace folder" })
 vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, { desc = "Remove workspace folder" })
@@ -108,23 +106,12 @@ end)(vim.diagnostic.open_float)
 local lspconfig = require('lspconfig')
 local cmp_nvim_lsp = require('cmp_nvim_lsp')
 local schemastore = require('schemastore')
+local null_ls = require("null-ls")
 
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
 lspconfig.tsserver.setup {
   capabilities = capabilities,
-  settings = {
-    javascript = {
-      format = {
-        enable = false -- Use the formatter from null-ls
-      }
-    },
-    typescript = {
-      format = {
-        enable = false -- Use the formatter from null-ls
-      }
-    }
-  }
 }
 lspconfig.eslint.setup { capabilities = capabilities }
 lspconfig.astro.setup { capabilities = capabilities }
@@ -134,7 +121,7 @@ lspconfig.html.setup { capabilities = capabilities }
 lspconfig.pyright.setup { capabilities = capabilities }
 lspconfig.texlab.setup { capabilities = capabilities }
 lspconfig.cssls.setup { capabilities = capabilities }
-lspconfig.sumneko_lua.setup {
+lspconfig.lua_ls.setup {
   capabilities = capabilities,
   settings = {
     Lua = {
@@ -161,3 +148,24 @@ lspconfig.jsonls.setup {
   }
 }
 lspconfig.yamlls.setup { capabilities = capabilities }
+null_ls.setup(
+  {
+    sources = {
+      null_ls.builtins.diagnostics.markdownlint,
+      null_ls.builtins.formatting.prettier,
+    },
+    on_attach = function(client, bufnr)
+      if client.supports_method("textDocument/formatting") then
+        vim.keymap.set("n", "=", function()
+          vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
+        end, { buffer = bufnr, desc = "[lsp] format" })
+      end
+
+      if client.supports_method("textDocument/rangeFormatting") then
+        vim.keymap.set("x", "=", function()
+          vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
+        end, { buffer = bufnr, desc = "[lsp] format" })
+      end
+    end,
+  }
+)
