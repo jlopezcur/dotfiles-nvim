@@ -12,52 +12,31 @@ end
 require("lualine").setup(
   {
     options = {
-      theme = "tokyonight",
       component_separators = "|",
       section_separators = { left = "", right = "" }
     },
     extensions = {
       "fugitive",
       "quickfix",
-      "toggleterm"
+      "toggleterm",
+      "nvim-tree",
+      "nvim-dap-ui"
     },
     sections = {
-      lualine_a = {
-        { "mode", fmt = fmt }
-      },
-      lualine_b = {
-        "filename"
-      },
-      lualine_c = {
-        {
-          "diff",
-          diff_color = {
-            -- Same values like general color option can be used here.
-            added = { fg = "#b9f27c" }, -- changes diff's added color
-            modified = { fg = "#FF9E64" }, -- changes diff's modified color
-            removed = { fg = "#F7768E" } -- changes diff's removed color you
-          }
-        },
-        { "diagnostics", sources = { "nvim_diagnostic" } }
-      },
-      -- {"filename", path = 1},
-      lualine_x = {
-        "encoding",
-        "fileformat",
-        "filetype"
-      },
+      lualine_a = { { "mode", fmt = fmt } },
+      lualine_b = { "branch", "diff", "diagnostics" },
+      lualine_c = { "filename" },
+      lualine_x = { "encoding", "fileformat", "filetype" },
       lualine_y = { "progress" },
-      lualine_z = {
-        { "location" }
-      }
+      lualine_z = { "location" }
     },
     inactive_sections = {
-      lualine_a = { "filename" },
+      lualine_a = {},
       lualine_b = {},
-      lualine_c = {},
-      lualine_x = {},
+      lualine_c = { "filename" },
+      lualine_x = { "location" },
       lualine_y = {},
-      lualine_z = { "location" }
+      lualine_z = {}
     }
   }
 )
