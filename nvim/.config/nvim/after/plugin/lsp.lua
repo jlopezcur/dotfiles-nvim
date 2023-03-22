@@ -147,7 +147,15 @@ lspconfig.jsonls.setup {
     }
   }
 }
-lspconfig.yamlls.setup { capabilities = capabilities }
+lspconfig.yamlls.setup {
+  capabilities = capabilities,
+  settings = {
+    yaml = {
+      schemas = schemastore.yaml.schemas(),
+      validate = { enable = true }
+    }
+  }
+}
 null_ls.setup(
   {
     sources = {
