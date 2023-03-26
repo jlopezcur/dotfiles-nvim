@@ -169,6 +169,7 @@ null_ls.setup(
       }),
       null_ls.builtins.formatting.autopep8,
       null_ls.builtins.formatting.xmlformat,
+      null_ls.builtins.formatting.latexindent,
     },
     on_attach = function(client, bufnr)
       if client.supports_method("textDocument/formatting") then
