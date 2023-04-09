@@ -401,7 +401,4 @@ require("heirline").setup({
   opts = {
     colors = colors,
   },
-  winbar = {},
-  tabline = {},
-  statuscolumn = {},
 })
