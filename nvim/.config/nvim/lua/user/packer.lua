@@ -65,10 +65,7 @@ return require "packer".startup(
     -- statusline
     --
 
-    use {
-      "hoob3rt/lualine.nvim",
-      requires = { "kyazdani42/nvim-web-devicons", opt = true }
-    }
+    use { "rebelot/heirline.nvim", event = "UiEnter" }
 
     --
     -- notifications
