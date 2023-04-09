@@ -10,9 +10,9 @@ require("notify").setup(
     minimum_width = 50,
     max_width = 120,
     icons = {
-      ERROR = "",
-      WARN = "",
-      INFO = "",
+      ERROR = "",
+      WARN = "",
+      INFO = "",
       DEBUG = "",
       TRACE = "✎"
     }
