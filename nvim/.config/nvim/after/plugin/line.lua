@@ -1,46 +1,3 @@
---
--- configuration
---
-
--- local fmt = function(str)
---   if str == "V-BLOCK" then
---     return "V-B"
---   end
---   return str:sub(1, 1)
--- end
---
--- require("lualine").setup(
---   {
---     options = {
---       component_separators = "|",
---       section_separators = { left = "", right = "" }
---     },
---     extensions = {
---       "fugitive",
---       "quickfix",
---       "toggleterm",
---       "nvim-dap-ui",
---       "neo-tree"
---     },
---     sections = {
---       lualine_a = { { "mode", fmt = fmt } },
---       lualine_b = { "branch", "diff", "diagnostics" },
---       lualine_c = { "filename" },
---       lualine_x = { "encoding", "fileformat", "filetype" },
---       lualine_y = { "progress" },
---       lualine_z = { "location" }
---     },
---     inactive_sections = {
---       lualine_a = {},
---       lualine_b = {},
---       lualine_c = { "filename" },
---       lualine_x = { "location" },
---       lualine_y = {},
---       lualine_z = {}
---     }
---   }
--- )
-
 local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
 
@@ -194,6 +151,10 @@ local Git = {
   },
 }
 
+--
+-- Diagnostics
+--
+
 local Diagnostics = {
   condition = conditions.has_diagnostics,
   static = {
@@ -244,6 +205,10 @@ local Diagnostics = {
   },
 }
 
+--
+-- Ruler & ScrollBar
+--
+
 local Ruler = {
   -- %l = current line number
   -- %L = number of lines in the buffer
@@ -266,6 +231,10 @@ local ScrollBar = {
   end,
   -- hl = { fg = "blue", bg = "bright_bg" },
 }
+
+--
+-- File[Type|Encoding|Format|Size|Name]
+--
 
 local FileType = {
   provider = function()
@@ -300,14 +269,6 @@ local FileSize = {
     local i = math.floor((math.log(fsize) / math.log(1024)))
     return string.format("%.2g%s", fsize / math.pow(1024, i), suffix[i + 1])
   end
-}
-
-local Spell = {
-  condition = function()
-    return vim.wo.spell
-  end,
-  provider = 'SPELL ',
-  hl = { bold = true, fg = "orange" }
 }
 
 local FileNameBlock = {
@@ -387,6 +348,19 @@ FileNameBlock = utils.insert(FileNameBlock,
   FileFlags,
   { provider = '%<' }                      -- this means that the statusline is cut here when there's not enough space
 )
+
+--
+-- Spell
+--
+
+local Spell = {
+  condition = function()
+    return vim.wo.spell
+  end,
+  provider = 'SPELL ',
+  hl = { bold = true, fg = "orange" }
+}
+
 
 local Align = { provider = "%=" }
 local Space = { provider = " " }
