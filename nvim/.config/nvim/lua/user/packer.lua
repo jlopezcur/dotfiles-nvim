@@ -92,13 +92,18 @@ return require "packer".startup(
       requires = { { "nvim-lua/plenary.nvim" }, { "nvim-telescope/telescope-fzy-native.nvim" } }
     }
     use "nvim-telescope/telescope-ui-select.nvim"
+    vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
     use {
-      "kyazdani42/nvim-tree.lua",
+      "nvim-neo-tree/neo-tree.nvim",
+      branch = "v2.x",
       requires = {
-        "kyazdani42/nvim-web-devicons"
-      },
-      tag = "nightly"
+        "nvim-lua/plenary.nvim",
+        "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+        "MunifTanjim/nui.nvim",
+      }
     }
+    use { 'stevearc/dressing.nvim' }
+    use "lukas-reineke/indent-blankline.nvim"
     use "AckslD/nvim-neoclip.lua"
     use "kkharji/sqlite.lua"
     use {
