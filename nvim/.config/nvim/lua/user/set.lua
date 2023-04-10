@@ -80,3 +80,10 @@ vim.o.relativenumber = true
 --
 
 vim.o.guifont = "FiraCode Nerd Font:h15"
+
+--
+-- Disable warnings on checkhealth
+--
+
+vim.cmd [[let g:loaded_ruby_provider = 0]]
+vim.cmd [[let g:loaded_perl_provider = 0]]
