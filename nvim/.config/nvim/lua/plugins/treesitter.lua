@@ -2,9 +2,10 @@
 -- configuration
 --
 
-require "nvim-treesitter.configs".setup {
+require 'nvim-treesitter.configs'.setup {
   context_commentstring = { enable = true },
-  ensure_installed = "all",
+  -- ensure_installed = "all",
+  -- auto_install = false,
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false
