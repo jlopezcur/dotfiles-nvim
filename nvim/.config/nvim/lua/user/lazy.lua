@@ -15,7 +15,7 @@ require("lazy").setup({
     "onsails/lspkind-nvim",
     "b0o/schemastore.nvim",
     "folke/lsp-colors.nvim",
-    { "petertriho/cmp-git", requires = "nvim-lua/plenary.nvim" },
+    { "petertriho/cmp-git", dependencies = {"nvim-lua/plenary.nvim"} },
 
     --
     -- diagnostic
@@ -24,7 +24,7 @@ require("lazy").setup({
     "jose-elias-alvarez/null-ls.nvim",
     {
       "folke/trouble.nvim",
-      requires = "kyazdani42/nvim-web-devicons",
+      dependencies = {"kyazdani42/nvim-web-devicons"},
       config = function()
         require "trouble".setup {}
       end
@@ -61,7 +61,7 @@ require("lazy").setup({
     -- treesitter
     --
 
-    { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" },
+    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
     "nvim-treesitter/playground",
 
     --
@@ -70,15 +70,15 @@ require("lazy").setup({
 
     {
       "nvim-telescope/telescope.nvim",
-      requires = { { "nvim-lua/plenary.nvim" }, { "nvim-telescope/telescope-fzy-native.nvim" } }
+      dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-fzy-native.nvim" }
     },
     "nvim-telescope/telescope-ui-select.nvim",
     {
       "nvim-neo-tree/neo-tree.nvim",
       branch = "v2.x",
-      requires = {
+      dependencies = {
         "nvim-lua/plenary.nvim",
-        "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+        "kyazdani42/nvim-web-devicons",
         "MunifTanjim/nui.nvim",
       }
     },
@@ -88,7 +88,7 @@ require("lazy").setup({
     "kkharji/sqlite.lua",
     {
       "ThePrimeagen/harpoon",
-      requires = { { "nvim-lua/plenary.nvim" } }
+      dependencies = {"nvim-lua/plenary.nvim"}
     },
     "tpope/vim-repeat",
     "ggandor/lightspeed.nvim",
@@ -97,7 +97,7 @@ require("lazy").setup({
     -- preview
     --
 
-    { "iamcco/markdown-preview.nvim", run = "cd app && yarn install" },
+    { "iamcco/markdown-preview.nvim", build = "cd app && yarn install" },
 
     --
     -- edition
@@ -117,14 +117,14 @@ require("lazy").setup({
         end
       },
     "norcalli/nvim-colorizer.lua",
-    { "windwp/nvim-spectre", requires = "nvim-lua/plenary.nvim" },
+    { "windwp/nvim-spectre", dependencies = {"nvim-lua/plenary.nvim"} },
     "ojroques/nvim-bufdel",
     "wellle/targets.vim",
 
     -- dashboard
     {
       "goolord/alpha-nvim",
-      requires = { "kyazdani42/nvim-web-devicons" }
+      dependencies = {"kyazdani42/nvim-web-devicons"}
     },
 
     -- wich key
@@ -143,12 +143,12 @@ require("lazy").setup({
 
     -- use {
     --   "rcarriga/vim-ultest",
-    --   requires = {"vim-test/vim-test"},
-    --   run = ":UpdateRemotePlugins"
+    --   dependencies = {"vim-test/vim-test"},
+    --   build = ":UpdateRemotePlugins"
     -- }
     "mfussenegger/nvim-dap",
     "nvim-telescope/telescope-dap.nvim",
-    { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } },
+    { "rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap"} },
 
     --
     -- term
@@ -163,12 +163,12 @@ require("lazy").setup({
     "tpope/vim-fugitive",
     {
       "lewis6991/gitsigns.nvim",
-      requires = {
+      dependencies = {
         "nvim-lua/plenary.nvim"
       }
     },
     "rhysd/git-messenger.vim",
-    { "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" },
+    { "sindrets/diffview.nvim", dependencies = {"nvim-lua/plenary.nvim"} },
 
     --
     -- decorators
