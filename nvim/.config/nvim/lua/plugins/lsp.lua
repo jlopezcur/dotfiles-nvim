@@ -45,7 +45,7 @@ vim.keymap.set("n", "gh", vim.lsp.buf.hover, { desc = "Info hover" })
 vim.keymap.set("n", "gi", require("telescope.builtin").lsp_implementations, { desc = "Go to implementation" })
 vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, { desc = "List references" })
 vim.keymap.set("n", "ga", vim.lsp.buf.code_action, { desc = "Code actions" })
-vim.keymap.set("v", "ga", vim.lsp.buf.range_code_action, { desc = "Range code actions" })
+-- vim.keymap.set("v", "ga", vim.lsp.buf.range_code_action, { desc = "Range code actions" })
 vim.keymap.set("n", "go", require("telescope.builtin").lsp_document_symbols, { desc = "Document symbols" })
 
 vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, { desc = "Add workspace folder" })
