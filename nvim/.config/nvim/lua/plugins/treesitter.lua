@@ -1,14 +1,40 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  dependencies = {
-    { "nvim-treesitter/playground", event = "VeryLazy" },
-  },
   build = ":TSUpdate",
+  dependencies = {
+    "nvim-treesitter/playground",
+    "nvim-treesitter/nvim-treesitter-refactor",
+    "nvim-treesitter/nvim-treesitter-textobjects",
+  },
   config = function()
     require 'nvim-treesitter.configs'.setup {
       context_commentstring = { enable = true },
-      -- ensure_installed = "all",
-      -- auto_install = false,
+      ensure_installed = {
+        "javascript", "typescript", "tsx", "jsdoc",
+        "css", "scss",
+        "html",
+        "lua", "luadoc",
+        "yaml", "json5", "toml", "dot", "ini",
+        "markdown",
+        "vim",
+        "java",
+        "gitcommit", "gitignore", "diff", "make",
+        "arduino",
+        "astro",
+        "bash", "fish", "passwd",
+        "c", "cpp",
+        "dockerfile", "terraform",
+        "gdscript",
+        "graphql",
+        "haskell",
+        "http",
+        "latex",
+        "mermaid",
+        "rust",
+        "regex",
+        "sql",
+        "zig"
+      },
       highlight = {
         enable = true,
         additional_vim_regex_highlighting = false
@@ -21,8 +47,31 @@ return {
           node_decremental = "gk"
         }
       },
-      indent = { enable = true },
-      autotag = { enable = true },
+      refactor = {
+        highlight_definitions = { enable = true },
+        smart_rename = {
+          enable = true,
+          keymaps = {
+            smart_rename = "trr",
+          },
+        },
+      },
+      textobjects = {
+        select = {
+          enable = true,
+          lookahead = true,
+          keymaps = {
+            ["af"] = "@function.outer",
+            ["if"] = "@function.inner",
+            ["ac"] = "@conditional.outer",
+            ["ic"] = "@conditional.inner",
+            ["al"] = "@loop.outer",
+            ["il"] = "@loop.inner",
+          }
+        }
+      },
+      -- indent = { enable = true },
+      -- autotag = { enable = true },
       playground = {
         enable = true,
         disable = {},
@@ -43,24 +92,15 @@ return {
       }
     }
 
-    --
     -- folding
-    --
-
     vim.wo.foldmethod = "expr"
     vim.wo.foldenable = false
     vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
 
-    --
     -- keymaps
-    --
-
     vim.keymap.set("n", "<Leader>tp", ":TSPlaygroundToggle<CR>", { desc = "Toggle TS Playground" })
 
-    --
     -- custom
-    --
-
     local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
     parser_config.mdx = {
       install_info = {
