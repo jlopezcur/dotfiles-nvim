@@ -12,9 +12,3 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = { "gitcommit", "gitrebase" },
   command = "setlocal spell",
 })
-
---
--- keymaps
---
-
-vim.keymap.set("n", "z=", require("telescope.builtin").spell_suggest, { desc = "Spell suggestions" })

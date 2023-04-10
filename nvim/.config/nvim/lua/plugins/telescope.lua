@@ -62,3 +62,6 @@ vim.keymap.set("n", "<leader>gt", builtin.git_stash, { desc = "Telescope: Git st
 
 -- Neoclip
 vim.keymap.set("n", "<leader>yl", ":Telescope neoclip<CR>", { desc = "Telescope: Neoclip" })
+
+-- spell
+vim.keymap.set("n", "z=", require("telescope.builtin").spell_suggest, { desc = "Spell suggestions" })
