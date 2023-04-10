@@ -1,20 +1,22 @@
---
--- configuration
---
+return {
+  "akinsho/nvim-toggleterm.lua",
+  event = "VeryLazy",
+  config = function()
+    require "toggleterm".setup {
+      size = 20,
+      open_mapping = [[<c-\>]],
+      shade_filetypes = {},
+      shade_terminals = true,
+      shading_factor = "1", -- the degree by which to darken to terminal colour, default: 1 for dark backgrounds, 3 for light
+      start_in_insert = true,
+      persist_size = true,
+      direction = "float" -- vertical | horizontal | float,
+    }
 
-require "toggleterm".setup {
-  size = 20,
-  open_mapping = [[<c-\>]],
-  shade_filetypes = {},
-  shade_terminals = true,
-  shading_factor = "1", -- the degree by which to darken to terminal colour, default: 1 for dark backgrounds, 3 for light
-  start_in_insert = true,
-  persist_size = true,
-  direction = "float" -- vertical | horizontal | float,
+    --
+    -- keymaps
+    --
+
+    vim.keymap.set("t", "<Leader><Esc>", "<C-\\><C-n>", { desc = "Change to normal mode" })
+  end
 }
-
---
--- keymaps
---
-
-vim.keymap.set("t", "<Leader><Esc>", "<C-\\><C-n>", { desc = "Change to normal mode" })

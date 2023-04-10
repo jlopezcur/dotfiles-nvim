@@ -2,43 +2,11 @@
 -- globals
 --
 
-vim.keymap.set("n", "<Leader>gq", ":BufDel<CR>", { desc = "Close the buffer" })
-vim.keymap.set("n", "<Leader>e", ":e ~/.config/nvim/<CR>", { desc = "Edit vimrc configuration files" })
-
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
-
---
--- lua: plugins.lua
---
-
-vim.api.nvim_create_autocmd(
-  { "BufEnter", "BufWinEnter" },
-  {
-    group = vim.api.nvim_create_augroup("Kloder", { clear = true }),
-    pattern = { "packer.lua" },
-    callback = function()
-      vim.keymap.set(
-        "n",
-        "gx",
-        function()
-          local node = require "nvim-treesitter.ts_utils".get_node_at_cursor()
-          if node == nil then
-            error("No treesitter parser found.")
-          end
-          local uri = vim.treesitter.get_node_text(node, 0)
-          local url = "https://github.com/" .. string.gsub(uri, '"', "")
-          vim.fn.jobstart({ "qutebrowser", url })
-        end,
-        { buffer = true, desc = "Open plugin in browser" }
-      )
-    end,
-    desc = "keymaps for plugins.lua"
-  }
-)
 
 --
 -- tex
@@ -80,3 +48,17 @@ vim.api.nvim_create_autocmd(
     desc = "keymaps for js/jsx/ts/tsx files"
   }
 )
+
+--
+-- platformio
+--
+
+-- vim.keymap.set("n", "<leader>pr", ":term pio -f -c vim run<CR>i", { desc = "Platformio: run" })
+-- vim.keymap.set("n", "<leader>pu", ":term pio -f -c vim run --target upload<CR>i", { desc = "Platformio: run upload" })
+-- vim.keymap.set("n", "<leader>pc", ":term pio -f -c vim run --target clean<CR>i", { desc = "Platformio: run clean" })
+-- vim.keymap.set("n", "<leader>pp", ":term pio -f -c vim run --target program<CR>i",
+--   { desc = "Platformio: run program" })
+-- vim.keymap.set("n", "<leader>pf", ":term pio -f -c vim run --target uploadfs<CR>i",
+--   { desc = "Platformio: run uploadfs" })
+-- vim.keymap.set("n", "<leader>pi", ":term pio -f -c vim update<CR>i", { desc = "Platformio: update" })
+-- vim.keymap.set("n", "<leader>pt", ":term pio -f -c vim test<CR>i", { desc = "Platformio: test" })

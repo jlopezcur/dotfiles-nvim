@@ -1,62 +1,62 @@
---
--- configuration
---
+return {
+  "goolord/alpha-nvim",
+  dependencies = { "kyazdani42/nvim-web-devicons" },
+  opts = function()
+    local dashboard = require("alpha.themes.startify")
 
-local alpha = require("alpha")
-local theme = require("alpha.themes.startify")
+    dashboard.section.header.val = {
+      "                                                     ",
+      "  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
+      "  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
+      "  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
+      "  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
+      "  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
+      "  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
+      "                                           by Kl0d3r ",
+    }
 
-theme.section.header.val = {
-  "                                                     ",
-  "  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
-  "  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
-  "  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
-  "  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
-  "  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
-  "  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
-  "                                           by Kl0d3r ",
-}
-
-theme.opts.layout = {
-  { type = "padding", val = 1 },
-  theme.section.header,
-  { type = "padding", val = 2 },
-  theme.section.top_buttons,
-  {
-    type = "group",
-    val = {
+    dashboard.opts.layout = {
       { type = "padding", val = 1 },
-      {
-        type = "text",
-        val = "MRU " .. vim.fn.getcwd(),
-        opts = { hl = "SpecialComment", shrink_margin = false },
-      },
-      { type = "padding", val = 1 },
+      dashboard.section.header,
+      { type = "padding", val = 2 },
+      dashboard.section.top_buttons,
       {
         type = "group",
-        val = function()
-          return { theme.mru(1, vim.fn.getcwd()) }
-        end,
-        opts = { shrink_margin = false },
+        val = {
+          { type = "padding", val = 1 },
+          {
+            type = "text",
+            val = "MRU " .. vim.fn.getcwd(),
+            opts = { hl = "SpecialComment", shrink_margin = false },
+          },
+          { type = "padding", val = 1 },
+          {
+            type = "group",
+            val = function()
+              return { dashboard.mru(1, vim.fn.getcwd()) }
+            end,
+            opts = { shrink_margin = false },
+          },
+        },
       },
-    },
-  },
-  {
-    type = "group",
-    val = {
-      { type = "padding", val = 1 },
-      { type = "text",    val = "MRU", opts = { hl = "SpecialComment" } },
-      { type = "padding", val = 1 },
       {
         type = "group",
-        val = function()
-          return { theme.mru(10) }
-        end,
+        val = {
+          { type = "padding", val = 1 },
+          { type = "text",    val = "MRU", opts = { hl = "SpecialComment" } },
+          { type = "padding", val = 1 },
+          {
+            type = "group",
+            val = function()
+              return { dashboard.mru(10) }
+            end,
+          },
+        },
       },
-    },
-  },
-  { type = "padding", val = 1 },
-  theme.section.bottom_buttons,
-  theme.section.footer,
+      { type = "padding", val = 1 },
+      dashboard.section.bottom_buttons,
+      dashboard.section.footer,
+    }
+    return dashboard.config
+  end
 }
-
-alpha.setup(theme.opts)
