@@ -34,7 +34,7 @@ return {
     provider = function(self)
       return self.warnings > 0 and (self.warn_icon .. self.warnings .. " ")
     end,
-    hl = { fg = "orange" },
+    hl = { fg = "yellow" },
   },
   {
     provider = function(self)
@@ -46,6 +46,6 @@ return {
     provider = function(self)
       return self.hints > 0 and (self.hint_icon .. self.hints)
     end,
-    hl = { fg = "yellow" },
+    hl = { fg = "green" },
   },
 }
