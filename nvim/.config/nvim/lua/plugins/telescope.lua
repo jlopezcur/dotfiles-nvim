@@ -44,7 +44,6 @@ return {
         buffers = {
           sort_lastused = true,
           ignore_current_buffer = true,
-          theme = "dropdown"
         },
         git_branches = {
           sort_lastused = true
