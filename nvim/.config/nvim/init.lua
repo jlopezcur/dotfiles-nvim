@@ -35,4 +35,24 @@ require "user.set"
 require "user.remap"
 require "user.spell"
 
-require('lazy').setup("plugins")
+require('lazy').setup({
+  spec = {
+    { import = "plugins" },
+  },
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        "gzip",
+        "matchit",
+        "matchparen",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
+    },
+  },
+  ui = {
+    border = "solid"
+  }
+})
