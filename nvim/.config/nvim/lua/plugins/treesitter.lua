@@ -33,7 +33,7 @@ return {
         "rust",
         "regex",
         "sql",
-        "zig"
+        "zig",
       },
       highlight = {
         enable = true,
