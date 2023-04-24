@@ -193,6 +193,8 @@ return {
             ["<c-x>"] = "clear_filter",
             ["[g"] = "prev_git_modified",
             ["]g"] = "next_git_modified",
+            ["i"] = "run_command",
+            ["I"] = "open_in_browser",
           },
           fuzzy_finder_mappings = {
             -- define keymaps for filter popup window in fuzzy_finder_mode
@@ -201,6 +203,18 @@ return {
             ["<up>"] = "move_cursor_up",
             ["<C-p>"] = "move_cursor_up",
           },
+        },
+        commands = {
+          run_command = function(state)
+            local node = state.tree:get_node()
+            local path = node:get_id()
+            vim.api.nvim_input(": " .. path .. "<Home>")
+          end,
+          open_in_browser = function(state)
+            local node = state.tree:get_node()
+            local path = node:get_id()
+            vim.api.nvim_input(":!qutebrowser " .. path .. "<CR>")
+          end,
         }
       },
       buffers = {
