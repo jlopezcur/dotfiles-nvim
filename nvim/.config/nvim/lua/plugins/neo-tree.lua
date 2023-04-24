@@ -7,8 +7,9 @@ return {
     "MunifTanjim/nui.nvim",
   },
   keys = {
-    { "<C-p>",     "<cmd>Neotree toggle<cr>", desc = "NeoTree" },
-    { "<Leader>e", ":e ~/.config/nvim/<CR>",  desc = "Edit vimrc configuration files" },
+    { "<C-p>", "<cmd>Neotree toggle reveal<cr>", desc = "NeoTree" },
+    { "<Leader>p", "<cmd>Neotree toggle reveal<cr>", desc = "NeoTree" },
+    { "<Leader>e", ":e ~/.config/nvim/<CR>", desc = "Edit vimrc configuration files" },
   },
   config = function()
     vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
