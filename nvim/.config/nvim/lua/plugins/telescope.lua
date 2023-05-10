@@ -32,7 +32,7 @@ return {
 
     telescope.setup {
       defaults = {
-        prompt_prefix = " ﮊ ",
+        prompt_prefix = " 󰍉 ",
         mappings = {
           i = {
             ["<esc>"] = actions.close,
