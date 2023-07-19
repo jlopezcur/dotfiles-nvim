@@ -1,9 +1,7 @@
 return {
   "LhKipp/nvim-nu",
-  lazy = false,
+  ft = 'nu',
   build = ":TSInstall nu",
-  config = function()
-    require("nu").setup{}
-  end
+  opts = {}
 }
 

@@ -7,7 +7,47 @@ return {
 		'williamboman/mason.nvim',
 		'williamboman/mason-lspconfig.nvim',
 	},
-	event = 'VeryLazy',
+	ft = {
+		'lua',
+		'javascript',
+		'javascriptreact',
+		'typescript',
+		'typescriptreact',
+		'vue',
+		'css',
+		'less',
+		'scss',
+		'graphql',
+		'html',
+		'json',
+		'yaml',
+		'latex',
+		'markdown',
+		'python',
+		'rust',
+		'sh',
+	},
+	keys = {
+		{ 'gd', ':lua require(\'telescope.builtin\').lsp_definitions()<cr>', desc = 'Go to definition' },
+		{ 'gh', ':lua vim.lsp.buf.hover()<cr>', desc = 'Info hover' },
+		{ 'gi', ':lua require(\'telescope.builtin\').lsp_implementations()<cr>', desc = 'Go to implementation' },
+		{ 'gr', ':lua require(\'telescope.builtin\').lsp_references()<cr>', desc = 'List references' },
+		{ 'ga', ':lua vim.lsp.buf.code_action()<cr>', desc = 'Code actions' },
+		{ 'go', ':lua require(\'telescope.builtin\').lsp_document_symbols()<cr>', desc = 'Document symbols' },
+		{ '<space>wa', ':lua vim.lsp.buf.add_workspace_folder()<cr>', desc = 'Add workspace folder' },
+		{ '<space>wr', ':lua vim.lsp.buf.remove_workspace_folder()<cr>', desc = 'Remove workspace folder' },
+		{
+			'<space>wl',
+			function()
+				print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+			end,
+			desc = 'List workspace folders',
+		},
+		{ '[d', ':lua vim.diagnostic.goto_prev()<cr>', desc = 'Go to prev diagnostic' },
+		{ ']d', ':lua vim.diagnostic.goto_next()<cr>', desc = 'Go to next diagnostic' },
+		{ '<leader>rn', ':lua vim.lsp.buf.rename()<cr>', desc = 'Rename' },
+		{ '<space>d', ':lua vim.diagnostic.setloclist()<cr>', desc = 'Set loc list' },
+	},
 	config = function()
 		-- decorations
 		vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'solid' })
@@ -39,27 +79,6 @@ return {
 				'yamlls',
 			},
 		})
-
-		-- keymaps
-		vim.keymap.set('n', 'gd', require('telescope.builtin').lsp_definitions, { desc = 'Go to definition' })
-		vim.keymap.set('n', 'gh', vim.lsp.buf.hover, { desc = 'Info hover' })
-		vim.keymap.set('n', 'gi', require('telescope.builtin').lsp_implementations, { desc = 'Go to implementation' })
-		vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, { desc = 'List references' })
-		vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, { desc = 'Code actions' })
-		-- vim.keymap.set("v", "ga", vim.lsp.buf.range_code_action, { desc = "Range code actions" })
-		vim.keymap.set('n', 'go', require('telescope.builtin').lsp_document_symbols, { desc = 'Document symbols' })
-
-		vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, { desc = 'Add workspace folder' })
-		vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, { desc = 'Remove workspace folder' })
-		vim.keymap.set('n', '<space>wl', function()
-			print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-		end, { desc = 'List workspace folders' })
-
-		vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to prev diagnostic' })
-		vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic' })
-
-		vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = 'Rename' })
-		vim.keymap.set('n', '<space>d', vim.diagnostic.setloclist, { desc = 'Set loc list' })
 
 		-- diagnostic
 		vim.diagnostic.config({ update_in_insert = true })

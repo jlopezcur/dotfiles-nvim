@@ -1,43 +1,15 @@
 return {
-  'windwp/nvim-spectre',
-  event = 'VeryLazy',
-  dependencies = { 'nvim-lua/plenary.nvim' },
-  config = function()
-    local spectre = require('spectre')
-    spectre.setup()
-
-    -- keymaps
-    vim.keymap.set(
-      "n",
-      "<leader>S",
-      function()
-        spectre.open()
-      end,
-      { desc = "Spectre: search" }
-    )
-    vim.keymap.set(
-      "n",
-      "<leader>sw",
-      function()
-        spectre.open_visual({ select_word = true })
-      end,
-      { desc = "Spectre: search current word" }
-    )
-    vim.keymap.set(
-      "n",
-      "<leader>s",
-      function()
-        spectre.open_visual()
-      end,
-      { desc = "Spectre: open visual" }
-    )
-    vim.keymap.set(
-      "n",
-      "<leader>sp",
-      function()
-        spectre.open_file_search()
-      end,
-      { desc = "Spectre: search in current file" }
-    )
-  end
+	'windwp/nvim-spectre',
+	dependencies = { 'nvim-lua/plenary.nvim' },
+	keys = {
+		{ '<leader>S', ':lua require(\'spectre\').open()<cr>', desc = 'Spectre search' },
+		{
+			'<leader>sw',
+			':lua require(\'spectre\').open_visual({ select_word = true })<cr>',
+			desc = 'Spectre search current word',
+		},
+		{ '<leader>s', ':lua require(\'spectre\').open_visual()<cr>', desc = 'Spectre open visual' },
+		{ '<leader>sp', ':lua require(\'spectre\').open_file_search()<cr>', desc = 'Spectre search in current file' },
+	},
+	opts = {},
 }
