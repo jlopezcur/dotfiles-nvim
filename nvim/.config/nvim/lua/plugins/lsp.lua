@@ -46,7 +46,7 @@ return {
 		},
 		{ '[d', ':lua vim.diagnostic.goto_prev()<cr>', desc = 'Go to prev diagnostic' },
 		{ ']d', ':lua vim.diagnostic.goto_next()<cr>', desc = 'Go to next diagnostic' },
-		{ '<leader>rn', ':lua vim.lsp.buf.rename()<cr>', desc = 'Rename' },
+		{ 'grr', ':lua vim.lsp.buf.rename()<cr>', desc = 'Rename' },
 		{ '<space>d', ':lua vim.diagnostic.setloclist()<cr>', desc = 'Set loc list' },
 	},
 	config = function()
