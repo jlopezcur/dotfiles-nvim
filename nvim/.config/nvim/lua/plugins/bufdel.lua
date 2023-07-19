@@ -1,6 +1,7 @@
 return {
-  "ojroques/nvim-bufdel",
-  config = function()
-    vim.keymap.set("n", "<Leader>gq", ":BufDel<CR>", { desc = "Close the buffer" })
-  end
+	'ojroques/nvim-bufdel',
+	cmd = { 'BufDel' },
+	keys = {
+		{ '<Leader>gq', ':BufDel<CR>', desc = 'Close the buffer' },
+	},
 }
