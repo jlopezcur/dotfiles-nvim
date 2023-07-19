@@ -7,7 +7,7 @@ return {
     vim.g.tokyonight_italic_functions = true
     vim.g.tokyonight_transparent = false
   end,
-  opts = function()
+  config = function()
     vim.cmd [[colorscheme tokyonight]]
   end
 }
