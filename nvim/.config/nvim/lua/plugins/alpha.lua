@@ -4,6 +4,8 @@ return {
   opts = function()
     local dashboard = require("alpha.themes.startify")
 
+    local ver = vim.version()
+
     dashboard.section.header.val = {
       "                                                     ",
       "  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
@@ -12,7 +14,7 @@ return {
       "  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
       "  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
       "  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
-      "                                           by Kl0d3r ",
+      "                                              v" .. ver.major .. "." .. ver.minor .. "." .. ver.patch .. " ",
     }
 
     dashboard.opts.layout = {
