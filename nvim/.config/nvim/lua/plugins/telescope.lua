@@ -18,6 +18,7 @@ return {
     -- Remember: Ctrl-a create a new brnach, Ctrl-d remove selected branch
     { "<leader>gb", "<cmd>Telescope git_branches<cr>",   desc = "Telescope: Git branches" },
     { "<leader>gc", "<cmd>Telescope git_bcommits<cr>",   desc = "Telescope: Git bcommits" },
+    { "<leader>gC", "<cmd>Telescope git_commits<cr>",   desc = "Telescope: Git commits" },
     { "<leader>gt", "<cmd>Telescope git_stash<cr>",      desc = "Telescope: Git stash" },
     -- Neoclip
     { "<leader>yl", "<cmd>Telescope neoclip<cr>",        desc = "Telescope: Neoclip" },
