@@ -20,7 +20,9 @@ vim.o.signcolumn = "yes"
 
 -- Avoid showing message extra message when using completion
 -- vim.cmd("set shortmess+=c")
-vim.o.shortmess = "c"
+vim.g.shortmess = "c"
+vim.g.cmdheight = 2
+vim.g.netrw_silent = 1
 
 --
 -- scroll
