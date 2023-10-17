@@ -29,27 +29,6 @@ return {
 		'rust',
 		'sh',
 	},
-	keys = {
-		{ 'gd', ':lua require(\'telescope.builtin\').lsp_definitions()<cr>', desc = 'Go to definition' },
-		{ 'gh', ':lua vim.lsp.buf.hover()<cr>', desc = 'Info hover' },
-		{ 'gi', ':lua require(\'telescope.builtin\').lsp_implementations()<cr>', desc = 'Go to implementation' },
-		{ 'gr', ':lua require(\'telescope.builtin\').lsp_references()<cr>', desc = 'List references' },
-		{ 'ga', ':lua vim.lsp.buf.code_action()<cr>', desc = 'Code actions' },
-		{ 'go', ':lua require(\'telescope.builtin\').lsp_document_symbols()<cr>', desc = 'Document symbols' },
-		{ '<space>wa', ':lua vim.lsp.buf.add_workspace_folder()<cr>', desc = 'Add workspace folder' },
-		{ '<space>wr', ':lua vim.lsp.buf.remove_workspace_folder()<cr>', desc = 'Remove workspace folder' },
-		{
-			'<space>wl',
-			function()
-				print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-			end,
-			desc = 'List workspace folders',
-		},
-		{ '[d', ':lua vim.diagnostic.goto_prev()<cr>', desc = 'Go to prev diagnostic' },
-		{ ']d', ':lua vim.diagnostic.goto_next()<cr>', desc = 'Go to next diagnostic' },
-		{ 'grr', ':lua vim.lsp.buf.rename()<cr>', desc = 'Rename' },
-		{ '<space>d', ':lua vim.diagnostic.setloclist()<cr>', desc = 'Set loc list' },
-	},
 	config = function()
 		-- decorations
 		vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'solid' })
@@ -79,6 +58,7 @@ return {
 				'texlab',
 				'tsserver',
 				'yamlls',
+				'mdx_analyzer',
 			},
 		})
 
@@ -175,6 +155,70 @@ return {
 					validate = { enable = true },
 				},
 			},
+		})
+
+		-- Global mappings.
+		-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+		vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
+		vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to prev diagnostic' })
+		vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic' })
+		vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
+
+		-- Use LspAttach autocommand to only map the following keys
+		-- after the language server attaches to the current buffer
+		vim.api.nvim_create_autocmd('LspAttach', {
+			group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+			callback = function(ev)
+				-- Enable completion triggered by <c-x><c-o>
+				vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+				-- Buffer local mappings.
+				-- See `:help vim.lsp.*` for documentation on any of the below functions
+				local opts = { buffer = ev.buf }
+				vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = 'Go to declaration', buffer = ev.buf })
+				vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Info hover', buffer = ev.buf })
+				vim.keymap.set(
+					'n',
+					'gi',
+					require('telescope.builtin').lsp_implementations,
+					{ desc = 'Go to implementation', buffer = ev.buf }
+				)
+				vim.keymap.set(
+					'n',
+					'gd',
+					require('telescope.builtin').lsp_definitions,
+					{ desc = 'Go to definition', buffer = ev.buf }
+				)
+				vim.keymap.set(
+					'n',
+					'gr',
+					require('telescope.builtin').lsp_references,
+					{ desc = 'Go to references', buffer = ev.buf }
+				)
+				vim.keymap.set(
+					'n',
+					'go',
+					require('telescope.builtin').lsp_document_symbols,
+					{ desc = 'Document symbols', buffer = ev.buf }
+				)
+				vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+				vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
+				vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
+				vim.keymap.set('n', '<space>wl', function()
+					print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+				end, opts)
+				vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+				vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, { desc = 'Rename', buffer = ev.buf })
+				vim.keymap.set(
+					{ 'n', 'v' },
+					'<space>ca',
+					vim.lsp.buf.code_action,
+					{ desc = 'Code actions', buffer = ev.buf }
+				)
+				vim.keymap.set('n', '<space>f', function()
+					vim.lsp.buf.format({ async = true })
+				end, opts)
+			end,
 		})
 	end,
 }
