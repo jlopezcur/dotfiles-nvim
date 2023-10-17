@@ -56,6 +56,7 @@ return {
 				'regex',
 				'sql',
 				'zig',
+				'query',
 			},
 			sync_install = false,
 			auto_install = true,

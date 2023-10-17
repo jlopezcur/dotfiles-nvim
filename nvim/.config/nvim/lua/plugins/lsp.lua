@@ -24,6 +24,7 @@ return {
 		'yaml',
 		'latex',
 		'markdown',
+		'mdx',
 		'python',
 		'rust',
 		'sh',
@@ -139,6 +140,7 @@ return {
 		lspconfig.cssls.setup({ capabilities = capabilities })
 		lspconfig.glslls.setup({ capabilities = capabilities })
 		lspconfig.marksman.setup({ capabilities = capabilities })
+		lspconfig.mdx_analyzer.setup({ capabilities = capabilities, filetypes = { 'mdx' } })
 		lspconfig.lua_ls.setup({
 			capabilities = capabilities,
 			settings = {
