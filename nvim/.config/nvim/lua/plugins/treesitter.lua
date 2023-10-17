@@ -122,15 +122,7 @@ return {
 		vim.wo.foldenable = false
 		vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
 
-		-- custom
-		local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
-		parser_config.mdx = {
-			install_info = {
-				-- url = "https://github.com/jlopezcur/tree-sitter-mdx", -- local path or git repo
-				url = '~/tree-sitter/tree-sitter-mdx',
-				files = { 'src/parser.c' },
-			},
-			filetype = 'mdx',
-		}
+		-- MDX (https://phelipetls.github.io/posts/mdx-syntax-highlight-treesitter-nvim/)
+		vim.treesitter.language.register('markdown', 'mdx')
 	end,
 }
