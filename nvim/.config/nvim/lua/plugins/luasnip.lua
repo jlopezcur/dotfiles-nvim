@@ -31,7 +31,7 @@ return {
     ls.add_snippets(
       "javascript",
       {
-        snippet("im", "import { $2 } from '$1';"),
+        snippet("im", "import ${2:module} from '${1:package}';"),
         snippet("ex", "export * from '$1';"),
         snippet("co", "console.log('$1');"),
         snippet("exp", "export const ${1:name} = (${2:params}) => $3;"),
