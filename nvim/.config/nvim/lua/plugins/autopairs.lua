@@ -1,7 +1,8 @@
 return {
-  "windwp/nvim-autopairs",
+  'windwp/nvim-autopairs',
   lazy = true,
   opts = {
-    disable_filetype = { "TelescopePrompt" },
-  }
+    fast_wrap = {},
+    disable_filetype = { 'TelescopePrompt', 'vim' },
+  },
 }
