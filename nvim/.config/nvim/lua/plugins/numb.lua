@@ -1,4 +1,4 @@
 return {
-  "nacro90/numb.nvim",
-  opts = {}
+  'nacro90/numb.nvim',
+  opts = {},
 }

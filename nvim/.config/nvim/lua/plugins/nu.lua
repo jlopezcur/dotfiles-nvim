@@ -1,7 +1,6 @@
 return {
-  "LhKipp/nvim-nu",
+  'LhKipp/nvim-nu',
   ft = 'nu',
-  build = ":TSInstall nu",
-  opts = {}
+  build = ':TSInstall nu',
+  opts = {},
 }
-

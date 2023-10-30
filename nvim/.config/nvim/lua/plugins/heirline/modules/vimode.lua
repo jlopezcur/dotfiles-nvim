@@ -15,7 +15,7 @@ return {
       no = 'N?',
       nov = 'N?',
       noV = 'N?',
-      ["no\22"] = 'N?',
+      ['no\22'] = 'N?',
       niI = 'Ni',
       niR = 'Nr',
       niV = 'Nv',
@@ -24,11 +24,11 @@ return {
       vs = 'Vs',
       V = 'V_',
       Vs = 'Vs',
-      ["\22"] = '^V',
-      ["\22s"] = '^V',
+      ['\22'] = '^V',
+      ['\22s'] = '^V',
       s = 'S',
       S = 'S_',
-      ["\19"] = '^S',
+      ['\19'] = '^S',
       i = 'I',
       ic = 'Ic',
       ix = 'Ix',
@@ -38,29 +38,29 @@ return {
       Rv = 'Rv',
       Rvc = 'Rv',
       Rvx = 'Rv',
-      c = "C",
-      cv = "Ex",
-      r = "...",
-      rm = "M",
-      ["r?"] = "?",
-      ["!"] = "!",
-      t = "T",
+      c = 'C',
+      cv = 'Ex',
+      r = '...',
+      rm = 'M',
+      ['r?'] = '?',
+      ['!'] = '!',
+      t = 'T',
     },
     mode_colors = {
-      n = "red",
-      i = "green",
-      v = "cyan",
-      V = "cyan",
-      ["\22"] = "cyan",
-      c = "orange",
-      s = "purple",
-      S = "purple",
-      ["\19"] = "purple",
-      R = "orange",
-      r = "orange",
-      ["!"] = "red",
-      t = "red",
-    }
+      n = 'red',
+      i = 'green',
+      v = 'cyan',
+      V = 'cyan',
+      ['\22'] = 'cyan',
+      c = 'orange',
+      s = 'purple',
+      S = 'purple',
+      ['\19'] = 'purple',
+      R = 'orange',
+      r = 'orange',
+      ['!'] = 'red',
+      t = 'red',
+    },
   },
   -- We can now access the value of mode() that, by now, would have been
   -- computed by `init()` and use it to index our strings dictionary.
@@ -70,20 +70,20 @@ return {
   -- control the padding and make sure our string is always at least 2
   -- characters long. Plus a nice Icon.
   provider = function(self)
-    return "%2(" .. self.mode_names[self.mode] .. "%)"
+    return '%2(' .. self.mode_names[self.mode] .. '%)'
   end,
   -- Same goes for the highlight. Now the foreground will change according to the current mode.
   hl = function(self)
     local mode = self.mode:sub(1, 1) -- get only the first mode character
-    return { fg = self.mode_colors[mode], bold = true, }
+    return { fg = self.mode_colors[mode], bold = true }
   end,
   -- Re-evaluate the component only on ModeChanged event!
   -- Also allows the statusline to be re-evaluated when entering operator-pending mode
   update = {
-    "ModeChanged",
-    pattern = "*:*",
+    'ModeChanged',
+    pattern = '*:*',
     callback = vim.schedule_wrap(function()
-      vim.cmd("redrawstatus")
+      vim.cmd('redrawstatus')
     end),
   },
 }

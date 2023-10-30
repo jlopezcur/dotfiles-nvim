@@ -1,4 +1,5 @@
+-- :Tabularize /,
 return {
-	'godlygeek/tabular',
-	cmd = 'Tabularize',
+  'godlygeek/tabular',
+  cmd = 'Tabularize',
 }

@@ -1,8 +1,10 @@
+local utils = require('heirline.utils')
+
 return {
   static = {
     -- sbar = { '▁', '▂', '▃', '▄', '▅', '▆', '▇', '█' }
     -- Another variant, because the more choice the better.
-    sbar = { '🭶', '🭷', '🭸', '🭹', '🭺', '🭻' }
+    sbar = { '🭶', '🭷', '🭸', '🭹', '🭺', '🭻' },
   },
   provider = function(self)
     local curr_line = vim.api.nvim_win_get_cursor(0)[1]
@@ -10,5 +12,5 @@ return {
     local i = math.floor((curr_line - 1) / lines * #self.sbar) + 1
     return string.rep(self.sbar[i], 2)
   end,
-  hl = { fg = "blue", bg = "black" },
+  hl = { fg = utils.get_highlight('Function').fg },
 }

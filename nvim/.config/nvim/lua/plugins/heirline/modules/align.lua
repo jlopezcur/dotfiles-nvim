@@ -1,1 +1,1 @@
-return { provider = "%=" }
+return { provider = '%=' }
