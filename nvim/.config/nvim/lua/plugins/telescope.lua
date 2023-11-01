@@ -10,6 +10,7 @@ return {
     -- Files
     { '<leader>ff', '<cmd>Telescope find_files<cr>', desc = 'Telescope: Find files' },
     { '<leader>fg', '<cmd>Telescope live_grep<cr>', desc = 'Telescope: Live grep' },
+    { '<leader>fs', '<cmd>Telescope git_status<cr>', desc = 'Telescope: Git status' },
     { '<leader>fb', '<cmd>Telescope buffers<cr>', desc = 'Telescope: Buffers' },
     { '<leader>fh', '<cmd>Telescope help_tags<cr>', desc = 'Telescope: Help tags' },
     -- LSP
