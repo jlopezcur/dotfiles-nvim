@@ -11,11 +11,15 @@ return {
     },
     -- 'nvim-treesitter/nvim-treesitter-refactor',
     'nvim-treesitter/nvim-treesitter-textobjects',
+    'JoosepAlviste/nvim-ts-context-commentstring',
   },
   config = function()
     require('nvim-treesitter.configs').setup({
       modules = {},
-      context_commentstring = { enable = true },
+      context_commentstring = {
+        enable = true,
+        enable_autocmd = false,
+      },
       ensure_installed = {
         'javascript',
         'typescript',
