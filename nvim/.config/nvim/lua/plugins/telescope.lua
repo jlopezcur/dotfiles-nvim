@@ -51,6 +51,10 @@ return {
         git_branches = {
           sort_lastused = true,
         },
+        spell_suggest = {
+          layout_strategy = 'vertical',
+          layout_config = { width = 0.25 },
+        },
       },
       extensions = {
         ['ui-select'] = {
