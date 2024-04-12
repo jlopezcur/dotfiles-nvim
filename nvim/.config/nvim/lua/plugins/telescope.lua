@@ -29,7 +29,6 @@ return {
   config = function()
     local telescope = require('telescope')
     local actions = require('telescope.actions')
-    local builtin = require('telescope.builtin')
 
     telescope.setup({
       defaults = {
@@ -41,6 +40,17 @@ return {
             ['<esc>'] = actions.close,
             ['<C-h>'] = 'which_key',
           },
+        },
+        file_ignore_patterns = {
+          'node_modules/.*',
+          '%.env',
+          'yarn.lock',
+          'package%-lock.json',
+          'lazy%-lock.json',
+          'target/.*',
+          'build/.*',
+          'dist/.*',
+          '.git/.*',
         },
       },
       pickers = {
@@ -55,6 +65,9 @@ return {
           layout_strategy = 'vertical',
           layout_config = { width = 0.25 },
         },
+        find_files = {
+          hidden = true,
+        },
       },
       extensions = {
         ['ui-select'] = {
@@ -65,5 +78,9 @@ return {
 
     telescope.load_extension('neoclip')
     telescope.load_extension('fzy_native')
+
+    vim.keymap.set('n', '<leader>f.', function()
+      require('telescope.builtin').find_files({ cwd = vim.fn.expand('%:p:h') })
+    end, { desc = 'Telescope: Find files on current directory' })
   end,
 }
