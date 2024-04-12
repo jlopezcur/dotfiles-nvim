@@ -1,9 +1,10 @@
 return {
   'nvim-neotest/neotest',
   dependencies = {
+    'nvim-neotest/nvim-nio',
     'nvim-lua/plenary.nvim',
-    'nvim-treesitter/nvim-treesitter',
     'antoinemadec/FixCursorHold.nvim',
+    'nvim-treesitter/nvim-treesitter',
     'marilari88/neotest-vitest',
     'nvim-neotest/neotest-jest',
   },
@@ -11,39 +12,23 @@ return {
     require('neotest').setup({
       adapters = {
         require('neotest-vitest'),
-        require('neotest-jest')({
-          jestCommand = 'npm test --',
-          jestConfigFile = 'jest.config.ts',
-          env = { CI = true },
-          cwd = function(path)
-            return vim.fn.getcwd()
-          end,
-        }),
+        require('neotest-jest'),
       },
     })
+    vim.keymap.set('n', '<Leader>tf', function()
+      require('neotest').run.run(vim.fn.expand('%'))
+    end, { desc = 'Test file' })
+    vim.keymap.set('n', '<Leader>tn', function()
+      require('neotest').run.run()
+    end, { desc = 'Test nearest' })
+    vim.keymap.set('n', '<Leader>tl', function()
+      require('neotest').run.run_last()
+    end, { desc = 'Test last' })
+    vim.keymap.set('n', '<Leader>tp', function()
+      require('neotest').output_panel.toggle()
+    end, { desc = 'Test output panel toggle' })
+    vim.keymap.set('n', '<Leader>ts', function()
+      require('neotest').summary.toggle()
+    end, { desc = 'Test summary toggle' })
   end,
-  keys = {
-    {
-      '<Leader>tf',
-      ':lua require\'neotest\'.run.run(vim.fn.expand(\'%\'))<CR>',
-      desc = 'Test file',
-    },
-    {
-      '<Leader>tn',
-      ':lua require\'neotest\'.run.run()<CR>',
-      desc = 'Test nearest',
-    },
-    {
-      '<Leader>tl',
-      ':lua require\'neotest\'.run.run_last()<CR>',
-      desc = 'Test last',
-    },
-    {
-      '<Leader>tp',
-      ':lua require\'neotest\'.run.output_panel()<CR>',
-      desc = 'Test last',
-    },
-    -- Test suite
-    -- Test visit (return to the last test file)
-  },
 }
