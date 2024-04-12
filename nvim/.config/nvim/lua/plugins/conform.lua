@@ -29,7 +29,7 @@ return {
       html = { { 'prettierd', 'prettier' } },
       json = { { 'prettierd', 'prettier' } },
       yaml = { { 'prettierd', 'prettier' } },
-      latex = { 'latexindent' },
+      tex = { 'latexindent' },
       markdown = { { 'prettierd', 'prettier' } },
       rust = { 'rustfmt' },
       sh = { 'shfmt' },
