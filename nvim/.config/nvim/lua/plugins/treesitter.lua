@@ -22,6 +22,7 @@ return {
         'jsdoc',
         'css',
         'scss',
+        'styled',
         'html',
         'lua',
         'luadoc',
