@@ -21,4 +21,8 @@ return {
       vim.notify = require('notify')
     end,
   },
+  {
+    'stevearc/dressing.nvim',
+    opts = {},
+  },
 }
