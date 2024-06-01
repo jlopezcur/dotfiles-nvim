@@ -31,35 +31,8 @@ return {
       'sh',
     },
     config = function()
-      -- decorations
-      vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'solid' })
-      vim.lsp.handlers['textDocument/signatureHelp'] =
-        vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'solid' })
-
-      -- config
-      vim.api.nvim_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
       -- mason
-      require('mason').setup({
-        ui = {
-          icons = {
-            package_pending = ' ',
-            package_installed = '󰄳 ',
-            package_uninstalled = ' 󰚌',
-          },
-          keymaps = {
-            toggle_server_expand = '<CR>',
-            install_server = 'i',
-            update_server = 'u',
-            check_server_version = 'c',
-            update_all_servers = 'U',
-            check_outdated_servers = 'C',
-            uninstall_server = 'X',
-            cancel_installation = '<C-c>',
-          },
-        },
-        max_concurrent_installers = 10,
-      })
+      require('mason').setup()
       require('mason-lspconfig').setup({
         ensure_installed = {
           'arduino_language_server',
@@ -67,7 +40,7 @@ return {
           'bashls',
           'clangd',
           'cssls',
-          'eslint',
+          -- 'eslint',
           'graphql',
           'html',
           'jsonls',
@@ -96,7 +69,7 @@ return {
       local capabilities = cmp_nvim_lsp.default_capabilities()
 
       lspconfig.tsserver.setup({})
-      lspconfig.eslint.setup({ capabilities = capabilities })
+      -- lspconfig.eslint.setup({ capabilities = capabilities })
       lspconfig.astro.setup({ capabilities = capabilities })
       lspconfig.bashls.setup({ capabilities = capabilities })
       lspconfig.clangd.setup({ capabilities = capabilities })
