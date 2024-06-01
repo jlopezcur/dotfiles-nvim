@@ -7,6 +7,7 @@ return {
       'hrsh7th/cmp-nvim-lua',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
+      'micangl/cmp-vimtex',
       'saadparwaiz1/cmp_luasnip',
       'onsails/lspkind-nvim',
     },
@@ -63,6 +64,7 @@ return {
         sources = cmp.config.sources({
           { name = 'nvim_lsp' },
           { name = 'nvim_lua' },
+          { name = 'vimtex' },
           { name = 'luasnip' },
           { name = 'path' },
         }, {
