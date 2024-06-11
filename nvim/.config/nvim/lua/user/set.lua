@@ -6,21 +6,21 @@ vim.o.showmode = false
 vim.o.title = true
 vim.o.termguicolors = true
 
-vim.o.path = ".,**"
-vim.o.encoding = "UTF-8"
-vim.g.mapleader = ","
-vim.o.completeopt = "menu,menuone,noselect"
-vim.o.clipboard = "unnamedplus"
+vim.o.path = '.,**'
+vim.o.encoding = 'UTF-8'
+vim.g.mapleader = ','
+vim.o.completeopt = 'menu,menuone,noselect'
+vim.o.clipboard = 'unnamedplus'
 
 vim.o.hidden = true
-vim.cmd("set list")
+vim.cmd('set list')
 vim.o.updatetime = 100
 vim.o.timeoutlen = 600
-vim.o.signcolumn = "yes"
+vim.o.signcolumn = 'yes'
 
 -- Avoid showing message extra message when using completion
 -- vim.cmd("set shortmess+=c")
-vim.g.shortmess = "c"
+vim.g.shortmess = 'c'
 vim.g.cmdheight = 2
 vim.g.netrw_silent = 1
 
@@ -36,7 +36,7 @@ vim.o.lazyredraw = true
 --
 
 vim.o.backup = false
-vim.o.backupcopy = "yes"
+vim.o.backupcopy = 'yes'
 vim.o.swapfile = false
 
 --
@@ -60,7 +60,7 @@ vim.o.smarttab = true
 --
 
 vim.o.textwidth = 80
-vim.o.colorcolumn = "80,120"
+vim.o.colorcolumn = '80,120'
 vim.o.wrap = false
 vim.o.smartcase = true
 
@@ -81,11 +81,11 @@ vim.o.relativenumber = true
 -- Visual editor integration
 --
 
-vim.o.guifont = "FiraCode Nerd Font:h15"
+vim.o.guifont = 'FiraCode Nerd Font:h15'
 
 --
 -- Disable warnings on checkhealth
 --
 
-vim.cmd [[let g:loaded_ruby_provider = 0]]
-vim.cmd [[let g:loaded_perl_provider = 0]]
+vim.cmd([[let g:loaded_ruby_provider = 0]])
+vim.cmd([[let g:loaded_perl_provider = 0]])
