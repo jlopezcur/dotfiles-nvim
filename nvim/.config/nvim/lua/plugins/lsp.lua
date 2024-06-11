@@ -40,6 +40,7 @@ return {
           'bashls',
           'clangd',
           'cssls',
+          'emmet_language_server',
           -- 'eslint',
           'graphql',
           'html',
@@ -69,6 +70,7 @@ return {
       local capabilities = cmp_nvim_lsp.default_capabilities()
 
       lspconfig.tsserver.setup({})
+      lspconfig.emmet_language_server.setup({ capabilities = capabilities })
       -- lspconfig.eslint.setup({ capabilities = capabilities })
       lspconfig.astro.setup({ capabilities = capabilities })
       lspconfig.bashls.setup({ capabilities = capabilities })
