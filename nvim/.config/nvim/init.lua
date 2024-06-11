@@ -34,6 +34,7 @@ vim.opt.rtp:prepend(lazypath)
 require('user.set')
 require('user.remap')
 require('user.spell')
+require('user.diagnostic')
 
 require('lazy').setup({
   install = { colorscheme = { "tokyonight" } },
