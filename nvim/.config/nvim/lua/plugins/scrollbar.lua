@@ -6,6 +6,8 @@ return {
         excluded_filetypes = { 'neo-tree' },
         current_only = true,
         base = 'right',
+        signs_hidden_for_insert = { 'all' },
+        hide_bar_for_insert = true,
         -- signs_on_startup = { 'all' },
         diagnostics_error_symbol = '󰅚',
         diagnostics_warn_symbol = '󰀪',
