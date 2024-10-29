@@ -27,7 +27,7 @@ return {
       'markdown',
       'mdx',
       'python',
-      'rust',
+      -- 'rust',
       'sh',
     },
     config = function()
@@ -35,8 +35,8 @@ return {
       require('mason').setup()
       require('mason-lspconfig').setup({
         ensure_installed = {
-          'arduino_language_server',
-          'astro',
+          -- 'arduino_language_server',
+          -- 'astro',
           'bashls',
           'clangd',
           'cssls',
@@ -46,11 +46,11 @@ return {
           'html',
           'jsonls',
           'pyright',
-          'rust_analyzer',
+          -- 'rust_analyzer',
           'sqlls',
           'lua_ls',
           'texlab',
-          'tsserver',
+          'ts_ls',
           'yamlls',
           'mdx_analyzer',
         },
@@ -69,7 +69,7 @@ return {
 
       local capabilities = cmp_nvim_lsp.default_capabilities()
 
-      lspconfig.tsserver.setup({})
+      lspconfig.ts_ls.setup({})
       lspconfig.emmet_language_server.setup({ capabilities = capabilities })
       -- lspconfig.eslint.setup({ capabilities = capabilities })
       lspconfig.astro.setup({ capabilities = capabilities })
