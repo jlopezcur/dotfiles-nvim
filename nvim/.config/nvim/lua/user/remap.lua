@@ -20,6 +20,12 @@ vim.keymap.set('n', '<Leader>Tx', ':tabclose<CR>')
 vim.keymap.set('n', '<Leader>To', ':tabonly<CR>')
 
 --
+-- terminal
+--
+
+vim.keymap.set('n', '<c-\\>', ':bo te<CR>i')
+
+--
 -- platformio
 --
 
