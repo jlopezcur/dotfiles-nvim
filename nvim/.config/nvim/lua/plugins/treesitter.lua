@@ -3,13 +3,6 @@ return {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     dependencies = {
-      {
-        'nvim-treesitter/playground',
-        cmd = 'TSPlaygroundToggle',
-        keys = {
-          { '<Leader>tp', ':TSPlaygroundToggle<CR>', desc = 'Toggle TS Playground' },
-        },
-      },
       -- 'nvim-treesitter/nvim-treesitter-refactor',
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
@@ -59,8 +52,9 @@ return {
           'sql',
           'zig',
           'query',
+          'nu',
         },
-        sync_install = false,
+        sync_install = true,
         auto_install = true,
         ignore_install = {},
         highlight = {
@@ -164,24 +158,6 @@ return {
         },
         indent = { enable = true },
         -- autotag = { enable = true },
-        playground = {
-          enable = true,
-          disable = {},
-          updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-          persist_queries = false, -- Whether the query persists across vim sessions
-          keybindings = {
-            toggle_query_editor = 'o',
-            toggle_hl_groups = 'i',
-            toggle_injected_languages = 't',
-            toggle_anonymous_nodes = 'a',
-            toggle_language_display = 'I',
-            focus_language = 'f',
-            unfocus_language = 'F',
-            update = 'R',
-            goto_node = '<cr>',
-            show_help = '?',
-          },
-        },
       })
 
       local ts_repeat_move = require('nvim-treesitter.textobjects.repeatable_move')
