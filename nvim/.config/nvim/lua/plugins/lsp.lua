@@ -120,9 +120,6 @@ return {
 
       -- Global mappings.
       -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-      vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
-      vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to prev diagnostic' })
-      vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic' })
       vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 
       -- Use LspAttach autocommand to only map the following keys
@@ -137,7 +134,6 @@ return {
           -- See `:help vim.lsp.*` for documentation on any of the below functions
           local opts = { buffer = ev.buf }
           vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = 'Go to declaration', buffer = ev.buf })
-          vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Info hover', buffer = ev.buf })
           vim.keymap.set(
             'n',
             'gi',
@@ -171,9 +167,6 @@ return {
           vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
           vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, { desc = 'Rename', buffer = ev.buf })
           vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, { desc = 'Code actions', buffer = ev.buf })
-          vim.keymap.set('n', '<space>f', function()
-            vim.lsp.buf.format({ async = true })
-          end, opts)
         end,
       })
     end,
