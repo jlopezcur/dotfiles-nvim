@@ -69,7 +69,23 @@ return {
 
       local capabilities = cmp_nvim_lsp.default_capabilities()
 
-      lspconfig.ts_ls.setup({})
+      lspconfig.ts_ls.setup({
+        capabilities = capabilities,
+        settings = {
+          typescript = {
+            inlayHints = {
+              includeInlayParameterNameHints = 'all',
+              includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+              includeInlayFunctionParameterTypeHints = true,
+              includeInlayVariableTypeHints = true,
+              includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+              includeInlayPropertyDeclarationTypeHints = true,
+              includeInlayFunctionLikeReturnTypeHints = true,
+              includeInlayEnumMemberValueHints = true,
+            },
+          },
+        },
+      })
       lspconfig.emmet_language_server.setup({ capabilities = capabilities })
       -- lspconfig.eslint.setup({ capabilities = capabilities })
       lspconfig.astro.setup({ capabilities = capabilities })
@@ -95,6 +111,9 @@ return {
             },
             workspace = {
               library = vim.api.nvim_get_runtime_file('', true),
+            },
+            hint = {
+              enable = true,
             },
           },
         },

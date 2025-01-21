@@ -44,21 +44,21 @@ return {
           'tve',
           fmt(
             [[
-import { describe, test, expect } from 'vitest';
+  import { describe, test, expect } from 'vitest';
 
-import { <func> } from './<file>';
+  import { <func> } from './<file>';
 
-describe('<func>', () =>> {
-  const cases: [string, null, null][] = [
-    ['Case 1', null, null],
-    ['Case 2', null, null],
-  ];
+  describe('<func>', () =>> {
+    const cases: [string, null, null][] = [
+      ['Case 1', null, null],
+      ['Case 2', null, null],
+    ];
 
-  test.each(cases)('%s', (_title, args, expected) =>> {
-    expect(<func>(args)).toEqual(expected);
+    test.each(cases)('%s', (_title, args, expected) =>> {
+      expect(<func>(args)).toEqual(expected);
+    });
   });
-});
-          ]],
+            ]],
             {
               func = i(1, 'func'),
               file = i(2, 'file'),
@@ -73,16 +73,16 @@ describe('<func>', () =>> {
           'tv',
           fmt(
             [[
-import { describe, test, expect } from 'vitest';
+  import { describe, test, expect } from 'vitest';
 
-import { <func> } from './<file>';
+  import { <func> } from './<file>';
 
-describe('<func>', () =>> {
-  test('<test>', () =>> {
-    expect(<func>(<args>)).toEqual(<expected>);
+  describe('<func>', () =>> {
+    test('<test>', () =>> {
+      expect(<func>(<args>)).toEqual(<expected>);
+    });
   });
-});
-          ]],
+            ]],
             {
               func = i(1, 'func'),
               file = i(2, 'file'),
