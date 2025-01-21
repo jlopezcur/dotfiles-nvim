@@ -23,6 +23,14 @@ return {
               ['<C-h>'] = 'which_key',
             },
           },
+          -- theme = require('telescope.themes').get_ivy(),
+          layout_strategy = 'vertical',
+          layout_config = {
+            height = vim.o.lines,
+            width = vim.o.columns,
+            prompt_position = 'bottom',
+            preview_height = 0.4,
+          },
           file_ignore_patterns = {
             'node_modules/.*',
             '%.env',
@@ -75,6 +83,12 @@ return {
       -- find_files
       --
       vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>', { desc = 'Telescope: Find files' })
+      vim.keymap.set(
+        'n',
+        '<leader>fF',
+        '<cmd>Telescope frecency workspace=CWD<cr>',
+        { desc = 'Telescope: Find frequent files' }
+      )
       -- Find files on the same directory
       vim.keymap.set('n', '<leader>f.', function()
         require('telescope.builtin').find_files({ cwd = vim.fn.expand('%:p:h') })
@@ -133,6 +147,14 @@ return {
       -- special
       --
       vim.keymap.set('n', '<leader>fr', '<cmd>Telescope resume<cr>', { desc = 'Telescope: Resume' })
+    end,
+  },
+  {
+    'nvim-telescope/telescope-frecency.nvim',
+    -- install the latest stable version
+    version = '*',
+    config = function()
+      require('telescope').load_extension('frecency')
     end,
   },
 }
