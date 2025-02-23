@@ -61,6 +61,9 @@ return {
           enable = true,
           additional_vim_regex_highlighting = false,
           disable = function(lang, bufnr)
+            if lang == 'nu' then
+              return true
+            end
             local langs = { 'sql', 'json' }
             return langs[lang] ~= nil and vim.api.nvim_buf_line_count(bufnr) > 50000
           end,
@@ -157,10 +160,10 @@ return {
           },
         },
         indent = { enable = true },
-        -- autotag = { enable = true },
+        autotag = { enable = true },
       })
 
-      local ts_repeat_move = require('nvim-treesitter.textobjects.repeatable_move')
+      -- local ts_repeat_move = require('nvim-treesitter.textobjects.repeatable_move')
 
       -- vim way: ; goes to the direction you were moving.
       -- vim.keymap.set({ 'n', 'x', 'o' }, ';', ts_repeat_move.repeat_last_move)
