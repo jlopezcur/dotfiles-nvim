@@ -13,7 +13,7 @@ return {
       local actions = require('telescope.actions')
 
       telescope.setup({
-        defaults = {
+        defaults = require('telescope.themes').get_ivy({
           prompt_prefix = ' 󰍉 ',
           selection_caret = '  ',
           sorting_strategy = 'ascending',
@@ -23,14 +23,13 @@ return {
               ['<C-h>'] = 'which_key',
             },
           },
-          -- theme = require('telescope.themes').get_ivy(),
-          layout_strategy = 'vertical',
-          layout_config = {
-            height = vim.o.lines,
-            width = vim.o.columns,
-            prompt_position = 'bottom',
-            preview_height = 0.4,
-          },
+          -- layout_strategy = 'vertical',
+          -- layout_config = {
+          --   height = vim.o.lines,
+          --   width = vim.o.columns,
+          --   prompt_position = 'bottom',
+          --   preview_height = 0.4,
+          -- },
           file_ignore_patterns = {
             'node_modules/.*',
             '%.env',
@@ -42,7 +41,7 @@ return {
             'dist/.*',
             '.git/.*',
           },
-        },
+        }),
         pickers = {
           buffers = {
             sort_lastused = true,
@@ -61,7 +60,7 @@ return {
         },
         extensions = {
           ['ui-select'] = {
-            require('telescope.themes').get_dropdown({}),
+            require('telescope.themes').get_dropdown(),
           },
         },
       })
