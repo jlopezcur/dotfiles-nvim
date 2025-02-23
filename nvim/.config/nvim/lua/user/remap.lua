@@ -11,15 +11,6 @@ vim.keymap.set('n', 'N', 'Nzzzv')
 vim.keymap.set('n', 'ZS', ':w<CR>')
 
 --
--- tabs
---
-
-vim.keymap.set('n', '<Leader>Tn', ':tabnext<CR>')
-vim.keymap.set('n', '<Leader>TN', ':tabnew<CR>')
-vim.keymap.set('n', '<Leader>Tx', ':tabclose<CR>')
-vim.keymap.set('n', '<Leader>To', ':tabonly<CR>')
-
---
 -- terminal
 --
 
