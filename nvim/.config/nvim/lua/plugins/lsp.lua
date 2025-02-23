@@ -22,6 +22,7 @@ return {
       'graphql',
       'html',
       'json',
+      'java',
       'yaml',
       'latex',
       'markdown',
@@ -32,8 +33,13 @@ return {
     },
     config = function()
       -- mason
-      require('mason').setup()
+      require('mason').setup({
+        -- registries = {
+        --   'file:~/dev/mason-registry',
+        -- },
+      })
       require('mason-lspconfig').setup({
+        automatic_installation = true,
         ensure_installed = {
           -- 'arduino_language_server',
           -- 'astro',
@@ -42,6 +48,7 @@ return {
           'cssls',
           'emmet_language_server',
           -- 'eslint',
+          -- 'oxlint',
           'graphql',
           'html',
           'jsonls',
@@ -56,8 +63,20 @@ return {
         },
       })
 
+      --
       -- diagnostic
+      --
+
       vim.diagnostic.config({ update_in_insert = true })
+
+      -- rewrite the goto_next and goto_prev diagnostic for open directly after
+      -- move
+      vim.keymap.set('n', ']d', function()
+        vim.diagnostic.goto_next({ float = true })
+      end, { desc = 'Go to next diagnostic' })
+      vim.keymap.set('n', '[d', function()
+        vim.diagnostic.goto_prev({ float = true })
+      end, { desc = 'Go to prev diagnostic' })
 
       --
       -- servers
@@ -94,6 +113,7 @@ return {
       lspconfig.html.setup({ capabilities = capabilities })
       lspconfig.pyright.setup({ capabilities = capabilities })
       lspconfig.texlab.setup({ capabilities = capabilities })
+      lspconfig.jdtls.setup({ capabilities = capabilities })
       lspconfig.cssls.setup({ capabilities = capabilities })
       lspconfig.glslls.setup({ capabilities = capabilities })
       lspconfig.marksman.setup({ capabilities = capabilities })
